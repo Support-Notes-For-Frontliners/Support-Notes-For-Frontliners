@@ -1,0 +1,47 @@
+{
+    "Health Care Workers":[
+        {
+            "name": "Overlake Medical Center & Clinics",
+            "region": "Seattle",
+            "description": "Overlake Medical Center is a 349-bed, nonprofit regional medical center offering a full range of advanced medical services to the Puget Sound region. Led by a volunteer board of trustees, we employ nearly 3,000 people and have some 1,000 active and courtesy providers on our medical staff, including more than 200 providers who are employed by the organization.",
+            "img": "/images/overlake.jpg"
+        },
+        {
+            "name": "Seattle Children's Bellevue Clinic and Surgery Center",
+            "region": "Seattle",
+            "description": "The Seattle Children's Bellevue Clinic specializes in the care of infants, children, teens, and young adults aged 0-21 in several specialties.",
+            "img": "/images/seattle_childrens_bellevue.jpg"
+        },
+        {
+            "name": "Virginia Mason Hospital and Seattle Medical Center",
+            "region": "Seattle",
+            "description": "Virginia Mason operates an acute care hospital in Seattle, licensed for 336 beds, which includes one of the region's busiest emergency departments.",
+            "img": "/images/virginia_mason_seattle.jpg"
+
+        },
+        {
+            "name": "Harborview Medical Center",
+            "region": "Seattle",
+            "description": "Harborview Medical Center is a comprehensive healthcare facility dedicated to providing specialized care for a broad spectrum of patients from throughout the Pacific Northwest, including the most vulnerable residents of King County.",
+            "img": "/images/harborview_seattle.jpg"
+
+        }
+    ],
+
+    "Nursing Home Workers":[
+        {
+            "name": "Sunrise Senior Living: Bellevue",
+            "region": "Seattle",
+            "description": "Located in downtown Bellevue behind Crossroads Shopping Center, Sunrise of Bellevue is senior living home in Washington. At the facility, registered nurses are on site 16 hours a day to support the health and safety of the seniors at the facility.",
+            "img": "/images/sunrise-of-bellevue.jpg"
+        },
+        {
+            "name": "Island House Assisted Living",
+            "region": "Seattle",
+            "description": " Located near I-90 in the heart of Town Center, Island House Assisted Living is a senior living community in Mercer Island, WA. ",
+            "img": "/images/island-house.jpg"
+        }
+    ]
+
+
+}

@@ -1,0 +1,14 @@
+{
+    "frontliners":[
+        {
+            "name": "Health Care Workers",
+            "description": "Health care workers are at the front line of the COVID-19 outbreak response and risk being infected daily to help the most vulnerable. As our society's first defense against COVID-19, health workers shoulder immense psychological distress and fatigue on a daily basis. Writing a note to health workers lets them know that they are appreciated for their service and are being supported as heroes of their community.",
+            "img": "/images/healthworkers.jpeg"
+        },
+        {
+            "name": "Nursing Home Workers",
+            "description": "In nursing homes across the nation, nursing home workers risk their lives daily to take care of the most vulnerable population affected by COVID-19, the elderly. Nursing home workers also endure the emotional pain of seeing the people they take care of daily pass away, with nursing homes having some of the highest death rates of any health facility in the US. Writing a note to nursing home workers helps give them much needed emotional support while making our appreciation for them known.",
+            "img": "/images/nursing_home_workers.jpg"
+        }
+    ]
+}
