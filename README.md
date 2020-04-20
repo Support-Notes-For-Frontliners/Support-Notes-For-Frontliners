@@ -1,0 +1,2 @@
+# Support-Notes-For-Frontliners
+Support Notes For Frontliners is a note submission platform that lets people show their support the heroes of our community. This project was created in response to the mental stress and trauma that continues to affect frontline workers who risk their lives daily to battle against the COVID-19 disease. Contribute to the project by writing an encouraging note to a frontliner to let them know that they are appreciated and are not alone in this fight.
