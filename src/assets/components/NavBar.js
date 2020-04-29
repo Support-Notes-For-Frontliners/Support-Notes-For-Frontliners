@@ -15,6 +15,9 @@ import Drawer from './Drawer.js'
 
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
   title: {
       flexGrow: 1,
       color: "white",
@@ -57,7 +60,7 @@ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 
   return (
-    <React.Fragment>
+    <React.Fragment className = {classes.root}>
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar color="primary" >

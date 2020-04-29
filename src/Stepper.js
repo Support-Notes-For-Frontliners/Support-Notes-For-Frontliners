@@ -9,7 +9,7 @@ import SelectLocation from './assets/components/SelectLocation'
 import SelectFrontliner from './assets/components/SelectFrontliner'
 import WriteNote from './assets/components/WriteNote.js'
 import firebase from 'firebase';
-import { Box, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 //init firebase
 require('dotenv').config()
@@ -19,11 +19,11 @@ const firebaseConfig = {
   apiKey: process.env.REACT_APP_API,
   authDomain: process.env.REACT_APP_DOM,
   databaseURL: process.env.REACT_APP_DATABASE_URL,
-  projectId:  process.env.REACT_APP_ID,
-  storageBucket:  process.env.REACT_APP_BUCKET,
-  messagingSenderId:  process.env.REACT_APP_SENDER,
-  appId:  process.env.REACT_APP_APP_ID,
-  measurementId:  process.env.REACT_APP_MEASUREMENT
+  projectId: process.env.REACT_APP_ID,
+  storageBucket: process.env.REACT_APP_BUCKET,
+  messagingSenderId: process.env.REACT_APP_SENDER,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
-  cards:{
+  cards: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(3),
     marginRight: theme.spacing(3)
@@ -46,15 +46,13 @@ const useStyles = makeStyles((theme) => ({
   },
   nextbutton: {
     margin: theme.spacing(1),
-    position: 'absolute',
-    bottom: '10px',
-    right: '175px'
+    position: "relative",
+    float: "right"
   },
   backbutton: {
     margin: theme.spacing(1),
-    position: 'absolute',
-    bottom: '10px',
-    right: '268px'
+    position: "relative",
+    float: "right"
   },
   completed: {
     display: 'inline-block',
@@ -99,22 +97,22 @@ export default function ProgressStepper() {
 
   const steps = getSteps();
 
-React.useEffect(()=>{
-    if(noteContent !== null && senderName !==null && noteContent !== "" && senderName !== ""){
+  React.useEffect(() => {
+    if (noteContent !== null && senderName !== null && noteContent !== "" && senderName !== "") {
       setBtnDisabled(false)
     }
-    else{
+    else {
       setBtnDisabled(true)
     }
-  }, [noteContent, senderName ])
+  }, [noteContent, senderName])
 
   function getStepContent(step) {
 
     switch (step) {
       case 0:
-        return <SelectFrontliner stepperCallback={handleFrontliner} />
+        return <SelectFrontliner elementSelected={cardSelected} stepperCallback={handleFrontliner} />
       case 1:
-        return <SelectLocation locationType={cardSelected} stepperCallback={handleLocation} />
+        return <SelectLocation elementSelected={facility} locationType={cardSelected} stepperCallback={handleLocation} />
       case 2:
         return <WriteNote stepperCallbackDescription={handleSender} stepperCallbackNote={handleNote} recipient={cardSelected} />
       default:
@@ -124,21 +122,19 @@ React.useEffect(()=>{
 
   function handleFrontliner(frontlinerData) {
     setCardSelected(frontlinerData);
-    handleComplete();
   }
 
   function handleLocation(locationData) {
     setFacility(locationData);
-    handleComplete();
   }
   function handleNote(noteData) {
-    if(noteData === ""){
+    if (noteData === "") {
       setNoteContent(null)
     }
     setNoteContent(noteData);
   }
   function handleSender(senderData) {
-    if(senderData === ""){
+    if (senderData === "") {
       setSenderName(null)
     }
     setSenderName(senderData);
@@ -168,21 +164,22 @@ React.useEffect(()=>{
         steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
+    handleComplete()
+
   };
 
-  // const handleBack = () => {
+  const handleBack = () => {
 
-  //   setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  // };
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
 
   const handleStep = (step) => () => {
-    console.log(step)
-    if(getStepValue(step-1)!==null || step===0){
+    if (getStepValue(step - 1) !== null || step === 0) {
       setActiveStep(step);
     }
   };
 
-  function getStepValue(step){
+  function getStepValue(step) {
     switch (step) {
       case 0:
         return cardSelected
@@ -198,6 +195,7 @@ React.useEffect(()=>{
 
   const handleSubmit = () => {
     handleComplete()
+    handleNext()
     // console.log(cardSelected)
     // console.log(facility)
     // console.log(noteContent)
@@ -222,7 +220,7 @@ React.useEffect(()=>{
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
-    handleNext();
+
   };
 
   // const handleReset = () => {
@@ -234,71 +232,81 @@ React.useEffect(()=>{
   // useEffect(()=>console.log(facility), [facility])
 
   return (
-    <div className={classes.root}>
-      <Stepper nonLinear activeStep={activeStep}>
-        {steps.map((label, index) => (
-          <Step key={label}>
-            <StepButton className onClick={handleStep(index)} completed={completed[index]}>
-              {label}
-            </StepButton>
-          </Step>
-        ))}
-      </Stepper>
-      <div class={classes.cards}>
 
-        {allStepsCompleted() ? (
-          <Grid container
+      <div className={classes.root}>
+        <Stepper nonLinear activeStep={activeStep}>
+          {steps.map((label, index) => (
+            <Step key={label}>
+              <StepButton className onClick={handleStep(index)} completed={completed[index]}>
+                {label}
+              </StepButton>
+            </Step>
+          ))}
+        </Stepper>
+        <div class={classes.cards}>
+
+          {allStepsCompleted() ? (
+            <Grid container
             direction="column"
             alignItems="center"
             justify="center"
             style={{ minHeight: '50vh' }}
-          >
+            >
 
-            <Grid item xs={12} md={3}>
+              <Grid item xs={12} md={3}>
 
-              <img alt='sending gif' className={classes.image} src='/images/sending.gif'/>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Typography align="center"className={classes.caption} variant="h6" >
-                Thanks for writing a note! Your note will be mailed to your chosen facility soon.
+                <img alt='sending gif' className={classes.image} src='/images/sending.gif' />
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <Typography align="center" className={classes.caption} variant="h6" >
+                  Thanks for writing a note! Your note will be mailed to your chosen facility soon.
               </Typography>
+              </Grid>
             </Grid>
-          </Grid>
-        ) : (
-            <>
-              <div>
-                {/* <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography> */}
-                {getStepContent(activeStep)}
-              </div>
-              <div>
-                {/* <Button variant="contained" color="primary" className={classes.backbutton} disabled={activeStep === 0} onClick={handleBack}>
-            Back
-          </Button>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={handleNext}
-            className={classes.nextbutton}
-          >
-            Next
-          </Button>
-          <> */}
-                <br />
-                {completedSteps() === totalSteps() - 1 ? <Box 
-                display="flex" flexDirection="row-reverse"> 
-                <Box p={1}><Button 
-                disabled={btnDisabled}
-                className={classes.button}
-                 variant="contained" color="primary" 
-                 onClick={handleSubmit}>
-                   Submit
+          ) : (
+              <>
+               <Grid
+                container
+                direction="column"
+                justify="center"
+                alignItems="right"
+              >
+                <Grid id="step-content" item xs={12}>
+                  {/* <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography> */}
+                  {getStepContent(activeStep)}
+                 </Grid>
+
+                 <Grid style={{marginTop:"5vh"}} item id="navigation" xs={12}>
+                  {completedSteps() === totalSteps() - 1 ?
+                    <Button
+                      disabled={btnDisabled}
+                      className={classes.nextbutton}
+                      variant="contained" color="primary"
+                      onClick={handleSubmit}>
+                      Submit
                  </Button>
-                  </Box></Box> : null}
-              </div>
-            </>
-          )
-        }
+                    : null}
+                  {completedSteps() === totalSteps() - 1 ? null : 
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleNext}
+                    className={classes.nextbutton}
+                    disabled={getStepValue(activeStep) === null ? true : false}
+                  >
+                    Next
+                </Button>}
+
+                  <Button variant="contained" color="primary" className={classes.backbutton} disabled={activeStep === 0} onClick={handleBack}>
+                    Back
+                </Button>
+                  </Grid>
+                </Grid>
+              </>
+            )
+          }
+        </div >
       </div >
-    </div >
+    
   );
 }

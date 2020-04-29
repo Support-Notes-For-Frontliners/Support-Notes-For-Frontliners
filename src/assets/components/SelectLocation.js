@@ -27,7 +27,7 @@ export default function SelectLocation(props) {
         //     default:
         //         return <Typography>An error has occured...</Typography>
         // }
-        return <FacilitySelector jsonKey={localProps.locationType} stepperCallback = {props.stepperCallback}/>
+        return <FacilitySelector elementSelected={props.elementSelected} jsonKey={localProps.locationType} stepperCallback = {props.stepperCallback}/>
     }
 
     return (

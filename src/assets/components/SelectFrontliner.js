@@ -20,6 +20,11 @@ const useStyles = makeStyles({
     card: {
         maxWidth: 345,
     },
+    cardSelected: {
+        maxWidth: 345,
+        backgroundColor: "#C8E8EA",
+        boxShadow: "none"
+    },
     media: {
         height: 140,
     },
@@ -30,7 +35,7 @@ const useStyles = makeStyles({
 
 
 
-export default function SelectFrontliner({ stepperCallback }) {
+export default function SelectFrontliner({ stepperCallback, elementSelected }) {
 
     scroll.scrollTo(0)
 
@@ -51,7 +56,7 @@ export default function SelectFrontliner({ stepperCallback }) {
                     <React.Fragment>
                         {frontliner_list["frontliners"].map((frontliner, index) => (
                             <Grid key={frontliner.name + "Card"} item>
-                                <Card className={classes.card} >
+                                <Card id={frontliner.name} className={frontliner.name === elementSelected ? classes.cardSelected : classes.card} >
                                 <CardActionArea>
                                 <CardMedia
                                         className={classes.media}

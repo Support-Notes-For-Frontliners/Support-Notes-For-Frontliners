@@ -17,6 +17,10 @@ const useStyles = makeStyles({
     root: {
         maxWidth: 345,
     },
+    rootSelected: {
+        maxWidth: 345,
+        backgroundColor: "#C8E8EA"
+    },
     media: {
         height: 140,
     },
@@ -26,7 +30,7 @@ const useStyles = makeStyles({
 });
 
 
-export default function FacilitySelector({stepperCallback, jsonKey}) {
+export default function FacilitySelector({stepperCallback, jsonKey, elementSelected}) {
 
     scroll.scrollTo(0);
 
@@ -45,7 +49,7 @@ export default function FacilitySelector({stepperCallback, jsonKey}) {
                     <React.Fragment>
                         {location_list[jsonKey].map((selectedHospital, index) => (
                             <Grid key={selectedHospital.name} item>
-                                <Card className={classes.root}>
+                                <Card id={selectedHospital.name} className={elementSelected === selectedHospital.name ? classes.rootSelected : classes.root}>
                                     <CardActionArea>
                                         <CardMedia
                                             alt="increase priority"
