@@ -83,6 +83,7 @@ function getSteps() {
 
 
 export default function ProgressStepper() {
+
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
@@ -97,6 +98,11 @@ export default function ProgressStepper() {
   const [senderName, setSenderName] = React.useState(null);
 
   const steps = getSteps();
+
+  React.useEffect(()=>{
+    scroll.scrollTo(0);
+  }, [activeStep])
+
 
   React.useEffect(() => {
     if (noteContent !== null && senderName !== null && noteContent !== "" && senderName !== "") {
@@ -166,13 +172,11 @@ export default function ProgressStepper() {
         : activeStep + 1;
     setActiveStep(newActiveStep);
     handleComplete()
-    scroll.scrollTo(0);
 
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    scroll.scrollTo(0);
   };
 
   const handleStep = (step) => () => {
