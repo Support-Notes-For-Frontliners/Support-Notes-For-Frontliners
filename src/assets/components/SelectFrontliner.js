@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import "typeface-bad-script"
 import { useSpring, animated } from 'react-spring'
 import frontliner_list from '../data/frontliner_list.json'
-import { animateScroll as scroll} from 'react-scroll'
+
 
 
 
@@ -36,8 +36,6 @@ const useStyles = makeStyles({
 
 
 export default function SelectFrontliner({ stepperCallback, elementSelected }) {
-
-    scroll.scrollTo(0)
 
     const classes = useStyles();
 
@@ -76,7 +74,7 @@ export default function SelectFrontliner({ stepperCallback, elementSelected }) {
                                 <CardActions>
                                     <Button id={frontliner.name} onClick={handleInput} size="small" color="primary">
                                         Select
-                                        </Button>
+                                    </Button>
                                 </CardActions>
                                 </Card>
                             </Grid>

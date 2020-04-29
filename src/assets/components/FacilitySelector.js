@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import location_list from '../data/location_list.json'
 import Grid from '@material-ui/core/Grid';
-import { animateScroll as scroll} from 'react-scroll'
+
 
 
 
@@ -31,8 +31,6 @@ const useStyles = makeStyles({
 
 
 export default function FacilitySelector({stepperCallback, jsonKey, elementSelected}) {
-
-    scroll.scrollTo(0);
 
     const classes = useStyles();
 

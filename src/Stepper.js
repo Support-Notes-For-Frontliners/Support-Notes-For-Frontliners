@@ -10,6 +10,7 @@ import SelectFrontliner from './assets/components/SelectFrontliner'
 import WriteNote from './assets/components/WriteNote.js'
 import firebase from 'firebase';
 import { Grid } from '@material-ui/core';
+import {animateScroll as scroll} from 'react-scroll';
 
 //init firebase
 require('dotenv').config()
@@ -165,12 +166,13 @@ export default function ProgressStepper() {
         : activeStep + 1;
     setActiveStep(newActiveStep);
     handleComplete()
+    scroll.scrollTo(0);
 
   };
 
   const handleBack = () => {
-
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    scroll.scrollTo(0);
   };
 
   const handleStep = (step) => () => {
