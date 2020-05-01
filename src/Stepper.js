@@ -283,7 +283,7 @@ export default function ProgressStepper() {
                  </Grid>
 
                  <Grid style={{marginTop:"5vh"}} item id="navigation" xs={12}>
-                  {completedSteps() === totalSteps() - 1 ?
+                  { isLastStep() ?
                     <Button
                       disabled={btnDisabled}
                       className={classes.nextbutton}
@@ -292,7 +292,7 @@ export default function ProgressStepper() {
                       Submit
                  </Button>
                     : null}
-                  {completedSteps() === totalSteps() - 1 ? null : 
+                  { isLastStep()  ? null : 
                   <Button
                     variant="contained"
                     color="primary"
