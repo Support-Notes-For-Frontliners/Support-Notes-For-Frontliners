@@ -211,8 +211,8 @@ export default function ProgressStepper() {
       facility: facility,
       note: noteContent,
       sender: senderName,
-      approved: "false",
-      sent: "false"
+      approved: false,
+      sent: false
     }
     saveFormData(formData);
   }
