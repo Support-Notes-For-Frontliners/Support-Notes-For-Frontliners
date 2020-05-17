@@ -56,14 +56,14 @@ const styles = (theme) => ({
 
 function ProductHeroLayout(props) {
   const { backgroundClassName, children, classes } = props;
-
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   return (
     <section className={classes.root}>
       <Container className={classes.container}>
+        {isMobile ? null : <><br/>
         <br/>
         <br/>
-        <br/>
-        <br/>
+        <br/></>}
         {children}
         <div className={classes.backdrop} />
         <div className={clsx(classes.background, backgroundClassName)} />

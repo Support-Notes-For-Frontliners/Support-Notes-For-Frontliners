@@ -41,7 +41,7 @@ export default function HomeStatWidget({firebase}){
     <Grid container 
         spacing={3}
         justify="center"
-        alignItems="center"
+        alignItems="flex-start"
         style={opacity()}
         >
 

@@ -211,10 +211,14 @@ export default function ProgressStepper(props) {
 
   };
 
-  // const handleReset = () => {
-  //   setActiveStep(0);
-  //   setCompleted({});
-  // };
+  const handleReset = () => {
+    setActiveStep(0);
+    setCardSelected(null);
+    setFacility(null);
+    setNoteContent(null);
+    setSenderName(null);
+    setCompleted({});
+  };
 
   // useEffect(()=>console.log(cardSelected), [cardSelected])
   // useEffect(()=>console.log(facility), [facility])
@@ -249,6 +253,13 @@ export default function ProgressStepper(props) {
                 <Typography align="center" className={classes.caption} variant="h6" >
                   Thanks for writing a note! Your note will be mailed to your chosen facility soon.
               </Typography>
+              </Grid>
+              <Grid item xs={12} md={3}>
+                <br/>
+                <br/>
+                <Button variant="contained" size="large" color="secondary" onClick={handleReset}>
+                  Support More Frontliners!
+                </Button>
               </Grid>
             </Grid>
           ) : (
