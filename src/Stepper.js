@@ -8,29 +8,9 @@ import Typography from '@material-ui/core/Typography';
 import SelectLocation from './assets/components/SelectLocation'
 import SelectFrontliner from './assets/components/SelectFrontliner'
 import WriteNote from './assets/components/WriteNote.js'
-import firebase from 'firebase';
 import { Grid } from '@material-ui/core';
 import {animateScroll as scroll} from 'react-scroll';
 
-//init firebase
-require('dotenv').config()
-console.log(process.env)
-
-const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API,
-  authDomain: process.env.REACT_APP_DOM,
-  databaseURL: process.env.REACT_APP_DATABASE_URL,
-  projectId: process.env.REACT_APP_ID,
-  storageBucket: process.env.REACT_APP_BUCKET,
-  messagingSenderId: process.env.REACT_APP_SENDER,
-  appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT
-};
-
-firebase.initializeApp(firebaseConfig);
-
-//init collection
-var formRef = firebase.database().ref('formData')
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,7 +62,7 @@ function getSteps() {
 }
 
 
-export default function ProgressStepper() {
+export default function ProgressStepper(props) {
 
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -98,6 +78,8 @@ export default function ProgressStepper() {
   const [senderName, setSenderName] = React.useState(null);
 
   const steps = getSteps();
+
+  let formRef = props.firebase.db.ref("formData");
 
   React.useEffect(()=>{
     scroll.scrollTo(0);
@@ -249,7 +231,7 @@ export default function ProgressStepper() {
             </Step>
           ))}
         </Stepper>
-        <div class={classes.cards}>
+        <div className={classes.cards}>
 
           {allStepsCompleted() ? (
             <Grid container

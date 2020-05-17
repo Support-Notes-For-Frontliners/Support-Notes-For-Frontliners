@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import HomeStatWidget from './HomeStatWidget.js';
+import FirebaseContext from './FireBase/FireBaseContext';
 
 const styles = (theme) => ({
   root: {
@@ -47,6 +49,10 @@ const styles = (theme) => ({
     position: 'absolute',
     bottom: theme.spacing(4),
   },
+  widgetRow: {
+    position: 'absolute',
+    bottom: theme.spacing(6),
+}
 });
 
 function ProductHeroLayout(props) {
@@ -62,6 +68,7 @@ function ProductHeroLayout(props) {
         {children}
         <div className={classes.backdrop} />
         <div className={clsx(classes.background, backgroundClassName)} />
+
         <img
           className={classes.arrowDown}
           src="/images/arrow-down.png"

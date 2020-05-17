@@ -5,6 +5,8 @@ import Button from '@material-ui/core/Button'
 import StyledTypography from './StyledTypography'
 import ProductHeroLayout from './ProductHeroLayout';
 import { animateScroll as scroll} from 'react-scroll'
+import HomeStatWidget from './HomeStatWidget.js';
+import FirebaseContext from './FireBase/FireBaseContext';
 
 const backgroundImage =
   'https://calmatters.org/wp-content/uploads/sites/2/2020/04/iStock_masks_illustration_01.jpg?fit=2000%2C1333';
@@ -17,6 +19,7 @@ const styles = (theme) => ({
   },
   button: {
     minWidth: 200,
+    marginTop: theme.spacing(6)
   },
   h5: {
     marginBottom: theme.spacing(4),
@@ -48,6 +51,11 @@ function ProductHero(props, { parentCallback }) {
       <StyledTypography color="inherit" align="center" variant="h5" className={classes.h5}>
       Our mission is to support workers who risk their lives daily to fight against the COVID-19 pandemic.
       </StyledTypography>
+      
+      <FirebaseContext.Consumer >
+          {firebase => (<HomeStatWidget firebase={firebase} className={classes.widgetRow}/>)}
+        </FirebaseContext.Consumer>
+
       <Button
         color="secondary"
         variant="contained"
