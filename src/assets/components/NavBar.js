@@ -60,7 +60,7 @@ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 
   return (
-    <React.Fragment className = {classes.root}>
+    <React.Fragment>
       <CssBaseline />
       <HideOnScroll {...props}>
         <AppBar color="primary" >

@@ -2,7 +2,6 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
 import { makeStyles } from '@material-ui/core/styles'
-import { useSpring, animated } from 'react-spring'
 
 const useStyles = makeStyles((theme) => ({
     widget:{
@@ -14,9 +13,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function HomeStatWidget({firebase}){
-
-    const springProps = useSpring({ opacity: 1, from: { opacity: 0 } })
-
     
     const [count, setCount] = React.useState(null);
     let formRef = firebase.db.ref("formData")
@@ -26,7 +22,6 @@ export default function HomeStatWidget({firebase}){
     
     function gotData(data){
         setCount(Object.keys(data.val()).length)
-        console.log(Object.keys(data.val()).length)
     }
     function errData(err){
         console.log("Error!")
@@ -50,15 +45,15 @@ export default function HomeStatWidget({firebase}){
         style={opacity()}
         >
 
-     <Grid xs={4} className={classes.widget}>
+     <Grid item xs={4} className={classes.widget}>
                 <Typography  variant='h3'>6</Typography>
                 <Typography>Total Facilities</Typography>
             </Grid>
-            <Grid xs={4} className={classes.widget}>
+            <Grid item xs={4} className={classes.widget}>
             <Typography variant='h3'>{count}</Typography>
                 <Typography>Notes Written</Typography>
             </Grid>
-            <Grid xs={4} className={classes.widget}>
+            <Grid item xs={4} className={classes.widget}>
                 <Typography variant='h3'>30+</Typography>
                 <Typography>Frontliner Occupations</Typography>
         </Grid> 

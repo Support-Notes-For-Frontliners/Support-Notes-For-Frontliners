@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 import StyledTypography from './StyledTypography'
 import ProductHeroLayout from './ProductHeroLayout';
-import { animateScroll as scroll} from 'react-scroll'
 import HomeStatWidget from './HomeStatWidget.js';
 import FirebaseContext from './FireBase/FireBaseContext';
 
@@ -33,10 +32,10 @@ const styles = (theme) => ({
   },
 });
 
-function ProductHero(props, { parentCallback }) {
+function ProductHero(props) {
 
   function handleClick() {
-    scroll.scrollTo(700);
+    
   }
 
   const { classes } = props;
@@ -55,14 +54,13 @@ function ProductHero(props, { parentCallback }) {
       <FirebaseContext.Consumer >
           {firebase => (<HomeStatWidget firebase={firebase} className={classes.widgetRow}/>)}
         </FirebaseContext.Consumer>
-
       <Button
         color="secondary"
         variant="contained"
         size="large"
         className={classes.button}
         component="a"
-        // href="/note"
+        href="#instructions"
         onClick={handleClick}
       >
         Write a Note

@@ -4,7 +4,7 @@ import 'firebase/auth';
 
 //init firebase
 require('dotenv').config()
-console.log(process.env)
+
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API,

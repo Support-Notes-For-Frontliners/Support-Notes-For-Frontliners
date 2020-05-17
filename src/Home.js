@@ -7,18 +7,18 @@ import { useSpring, animated } from 'react-spring'
 
 
 
-
 function Home() {
-
   const springProps = useSpring({ opacity: 1, from: { opacity: 0 } })
 
   return (
     <animated.div style={springProps}>
     <div>
     <Hero />
-    <div>
-    <HomeExplainer />
+
+    <div id="instructions">
+          <HomeExplainer />
     </div>
+    
     <Footer/>
     </div>
     </animated.div>

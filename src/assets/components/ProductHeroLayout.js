@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { withStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import HomeStatWidget from './HomeStatWidget.js';
-import FirebaseContext from './FireBase/FireBaseContext';
+
 
 const styles = (theme) => ({
   root: {
