@@ -50,7 +50,7 @@ export default function SelectFrontliner({ stepperCallback, elementSelected }) {
         <animated.div style={springProps}>
         <Grid container className={classes.grid} spacing={2}>
             <Grid item xs={12}>
-                <Grid container justify="center" spacing="3">
+                <Grid container justify="center" spacing={3}>
                     <React.Fragment>
                         {frontliner_list["frontliners"].map((frontliner, index) => (
                             <Grid key={frontliner.name + "Card"} item>

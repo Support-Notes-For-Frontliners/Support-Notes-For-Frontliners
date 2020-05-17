@@ -10,13 +10,11 @@ import FireBase from './assets/components/FireBase/FireBase'
 
 ReactDOM.render(
   <BrowserRouter>
-  <React.StrictMode>
   <FirebaseContext.Provider value={new FireBase()}>
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
     </FirebaseContext.Provider>
-  </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')
 );

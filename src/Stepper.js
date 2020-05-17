@@ -10,6 +10,8 @@ import SelectFrontliner from './assets/components/SelectFrontliner'
 import WriteNote from './assets/components/WriteNote.js'
 import { Grid } from '@material-ui/core';
 import {animateScroll as scroll} from 'react-scroll';
+import { Prompt } from 'react-router'
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -220,16 +222,16 @@ export default function ProgressStepper(props) {
     setCompleted({});
   };
 
+
   // useEffect(()=>console.log(cardSelected), [cardSelected])
   // useEffect(()=>console.log(facility), [facility])
 
   return (
-
       <div className={classes.root}>
         <Stepper nonLinear activeStep={activeStep}>
           {steps.map((label, index) => (
             <Step key={label}>
-              <StepButton className onClick={handleStep(index)} completed={completed[index]}>
+              <StepButton onClick={handleStep(index)} completed={completed[index]}>
                 {label}
               </StepButton>
             </Step>
@@ -264,11 +266,14 @@ export default function ProgressStepper(props) {
             </Grid>
           ) : (
               <>
+                <Prompt
+                  when={!allStepsCompleted() && cardSelected !== null}
+                   message='You have unsaved changes, are you sure you want to leave?'
+                />
                <Grid
                 container
                 direction="column"
                 justify="center"
-                alignItems="right"
               >
                 <Grid id="step-content" item xs={12}>
                   {/* <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography> */}

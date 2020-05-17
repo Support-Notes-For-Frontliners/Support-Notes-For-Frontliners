@@ -9,15 +9,26 @@ import { useSpring, animated } from 'react-spring'
 
 function Home() {
   const springProps = useSpring({ opacity: 1, from: { opacity: 0 } })
+  var Scroll = require('react-scroll');
+  var Element = Scroll.Element;
+  var scroller = Scroll.scroller;
 
+  function scrollTo() {
+    scroller.scrollTo('scroll-to-element', {
+      duration: 1000,
+      delay: 0,
+      smooth: 'easeInOutQuint'
+    })
+  }
+  
   return (
     <animated.div style={springProps}>
     <div>
-    <Hero />
+    <Hero parentCallback={scrollTo}/>
 
-    <div id="instructions">
-          <HomeExplainer />
-    </div>
+    <Element name="scroll-to-element" className="element">          
+        <HomeExplainer />
+    </Element>
     
     <Footer/>
     </div>

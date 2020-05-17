@@ -7,6 +7,9 @@ import ProductHeroLayout from './ProductHeroLayout';
 import HomeStatWidget from './HomeStatWidget.js';
 import FirebaseContext from './FireBase/FireBaseContext';
 
+
+
+
 const backgroundImage =
   'https://calmatters.org/wp-content/uploads/sites/2/2020/04/iStock_masks_illustration_01.jpg?fit=2000%2C1333';
 
@@ -35,7 +38,7 @@ const styles = (theme) => ({
 function ProductHero(props) {
 
   function handleClick() {
-    
+    props.parentCallback()
   }
 
   const { classes } = props;
@@ -60,7 +63,6 @@ function ProductHero(props) {
         size="large"
         className={classes.button}
         component="a"
-        href="#instructions"
         onClick={handleClick}
       >
         Write a Note
