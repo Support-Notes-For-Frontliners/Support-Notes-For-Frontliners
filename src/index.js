@@ -10,7 +10,7 @@ import FireBase from './assets/components/FireBase/FireBase'
 
 ReactDOM.render(
   <BrowserRouter>
-  <FirebaseContext.Provider value={new FireBase()}>
+    <FirebaseContext.Provider value={new FireBase()}>
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>

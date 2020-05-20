@@ -10,13 +10,14 @@ import { useSpring, animated } from 'react-spring'
 
 
 const backgroundImage =
-  'https://lh3.googleusercontent.com/proxy/LbltJKZK1lAkcVOj6H0xA0xQmQo_dM5PKGA9DQaGqHv0uz9uUXcFzp6s2EzhMJLD5lCecU7g46spwPSPbMwyBF0RBaPgqO35XP-fOqFhdw4bQvCNFllRegM5Y9wDPMcyy6FgVUmz2Q';
+  '/images/about-background.jpg';
 
 const styles = (theme) => ({
   background: {
     backgroundImage: `url(${backgroundImage})`,
     backgroundColor: '#7fc7d9', // Average color of the background image.
     backgroundPosition: 'center',
+    transition: 'all 1s ease',
   },
   root: {
     display: 'flex',
