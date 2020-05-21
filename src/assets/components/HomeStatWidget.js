@@ -15,13 +15,13 @@ const useStyles = makeStyles((theme) => ({
 export default function HomeStatWidget({firebase}){
     
     const [count, setCount] = React.useState(null);
-    let formRef = firebase.db.ref("formData")
+    let formRef = firebase.db.ref("notes_count")
     React.useEffect(()=> {
         formRef.on("value", gotData, errData )
     }, [formRef])
     
     function gotData(data){
-        setCount(Object.keys(data.val()).length)
+        setCount(data.val())
     }
     function errData(err){
         console.log("Error!")
