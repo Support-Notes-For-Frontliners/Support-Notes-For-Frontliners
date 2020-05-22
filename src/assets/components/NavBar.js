@@ -9,8 +9,8 @@ import Slide from '@material-ui/core/Slide';
 import { Link, IconButton } from '@material-ui/core';
 import { Link as RouterLink } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
-import { mdiNotebookOutline } from '@mdi/js';
-import Icon from '@mdi/react'
+//import { mdiNotebookOutline } from '@mdi/js';
+//import Icon from '@mdi/react'
 import Drawer from './Drawer.js'
 
 
@@ -65,11 +65,12 @@ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       <HideOnScroll {...props}>
         <AppBar color="primary" >
           <Toolbar>
-            <IconButton  href="/">
-           <Icon path={mdiNotebookOutline} title="icon" size={1} color="white" />
+            <IconButton  
+            href="/">
+              <img alt="logo512" src="/logo512-white.png" width="32" height="32"/>
            </IconButton>
             <Typography variant="h6" className={classes.title} noWrap>
-                <Link underline="none" component={RouterLink} to="/" style = {{color: "white" }}> 
+                <Link underline="none" component={RouterLink} to="/" style = {{color: "white" , marginLeft: "5px"}}> 
                 Support Notes For Frontliners
                 </Link>
             </Typography>
@@ -80,6 +81,11 @@ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             <Typography className = {classes.links}  variant="h6">
                 <Link underline="none" component={RouterLink} to="/note" style = {{color: "white" }}> 
                 Write a Note
+                </Link>
+            </Typography>
+            <Typography className = {classes.links}  variant="h6">
+                <Link underline="none" href="https://blog.notesforfrontliners.org" target="_blank" style= {{color: "white" }}> 
+                Blog
                 </Link>
             </Typography>
             <Typography className = {classes.links} variant="h6">

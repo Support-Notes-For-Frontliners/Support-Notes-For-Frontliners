@@ -14,6 +14,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
+import AnnouncementIcon from '@material-ui/icons/Announcement';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -72,15 +73,15 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const IconList = [<HomeIcon/>, <MailIcon/>, <InfoIcon/>]
-  const RefList = ["/", "/note", "/about"]
+  const IconList = [<HomeIcon/>, <MailIcon/>, <AnnouncementIcon/>,<InfoIcon/>]
+  const RefList = ["/", "/note", "https://blog.notesforfrontliners.org", "/about"]
 
   const drawer = (
     <div>
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['Home', 'Write a Note', 'About'].map((text, index) => (
+        {['Home', 'Write a Note', 'Blog', 'About'].map((text, index) => (
           <ListItemLink button component={RouterLink} to={RefList[index]}>
             <ListItemIcon>{IconList[index]}</ListItemIcon>
             <ListItemText primary={text} />
@@ -103,6 +104,7 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
+          
           <Typography variant="h6" className={classes.title} noWrap>
                 <Link underline="none" component={RouterLink} to="/" style = {{color: "white" }}> 
                 Support Notes For Frontliners
