@@ -14,21 +14,34 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HomeStatWidget({firebase}){
     
-    const [count, setCount] = React.useState(null);
-    let formRef = firebase.db.ref("notes_count")
+    const [noteCount, setNoteCount] = React.useState(null);
+    const [facilityCount, setFacilityCount] = React.useState(null);
+
+    let noteCountRef = firebase.db.ref("stats/notes_count")
+    let facilityCountRef = firebase.db.ref("stats/facility_count")
+
     React.useEffect(()=> {
-        formRef.on("value", gotData, errData )
-    }, [formRef])
+        noteCountRef.on("value", gotCountData, errData )
+    }, [noteCountRef])
+
+    React.useEffect(()=> {
+        facilityCountRef.on("value", gotFacilityData, errData )
+    }, [facilityCountRef])
+
+    function gotFacilityData(data){
+        setFacilityCount(data.val())
+    }
+
     
-    function gotData(data){
-        setCount(data.val())
+    function gotCountData(data){
+        setNoteCount(data.val())
     }
     function errData(err){
         console.log("Error!")
         console.log(err)
     }
     function opacity(){
-        if(count === null){
+        if(noteCount === null || facilityCount === null){
             return {opacity: '0'}
         } else {
             return {opacity: '1',  transition: 'all 1s ease',}
@@ -46,11 +59,11 @@ export default function HomeStatWidget({firebase}){
         >
 
      <Grid item xs={4} className={classes.widget}>
-                <Typography  variant='h3'>6</Typography>
+                <Typography  variant='h3'>{facilityCount}</Typography>
                 <Typography>Total Facilities</Typography>
             </Grid>
             <Grid item xs={4} className={classes.widget}>
-            <Typography variant='h3'>{count}</Typography>
+            <Typography variant='h3'>{noteCount}</Typography>
                 <Typography>Notes Written</Typography>
             </Grid>
             <Grid item xs={4} className={classes.widget}>
