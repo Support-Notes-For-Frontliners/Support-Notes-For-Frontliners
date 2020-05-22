@@ -1,17 +1,11 @@
 {
     "Health Care Workers":[
-        
+
         {
-            "name": "Seattle Children's Hospital",
-            "region": "Seattle",
-            "description": "The Seattle Children's Hospital specializes in the care of infants, children, teens, and young adults aged 0-21 in several specialties.",
-            "img": "/images/seattle_childrens_seattle.jpg"
-        },
-        {
-            "name": "Virginia Mason Hospital and Seattle Medical Center",
-            "region": "Seattle",
-            "description": "Virginia Mason operates an acute care hospital in Seattle, licensed for 336 beds, which includes one of the region's busiest emergency departments.",
-            "img": "/images/virginia_mason_seattle.jpg"
+            "name": "EvergreenHealth Medical Center",
+            "region": "Kirkland",
+            "description": "Founded in 1972, EvergreenHealth has served nearly 850,000 residents in the north King and south Snohomish counties. During the initial outbreak of the coronavirus, Evergreen became one of the first hospitals to respond to the epicenter of cases clustered in the Kirkland region.  ",
+            "img": "/images/evergreen_health.png"
 
         },
         {
@@ -21,6 +15,23 @@
             "img": "/images/harborview_seattle.jpg"
 
         },
+        
+        
+        {
+            "name": "Seattle Children's Hospital",
+            "region": "Seattle",
+            "description": "The Seattle Children's Hospital specializes in the care of infants, children, teens, and young adults aged 0-21 in several specialties.",
+            "img": "/images/seattle_childrens_seattle.jpg"
+        },
+        
+        {
+            "name": "Virginia Mason Hospital and Seattle Medical Center",
+            "region": "Seattle",
+            "description": "Virginia Mason operates an acute care hospital in Seattle, licensed for 336 beds, which includes one of the region's busiest emergency departments.",
+            "img": "/images/virginia_mason_seattle.jpg"
+
+        },
+        
         {
             "name": "Overlake Medical Center & Clinics",
             "region": "Seattle",
