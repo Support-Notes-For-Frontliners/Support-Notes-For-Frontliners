@@ -73,20 +73,24 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const IconList = [<HomeIcon/>, <MailIcon/>, <AnnouncementIcon/>,<InfoIcon/>]
-  const RefList = ["/", "/note", "https://blog.notesforfrontliners.org", "/about"]
+  const IconList = [<HomeIcon/>, <MailIcon/>, <InfoIcon/>]
+  const RefList = ["/", "/note",  "/about"]
 
   const drawer = (
     <div>
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['Home', 'Write a Note', 'Blog', 'About'].map((text, index) => (
+        {['Home', 'Write a Note', 'About'].map((text, index) => (
           <ListItemLink button component={RouterLink} to={RefList[index]}>
             <ListItemIcon>{IconList[index]}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItemLink>
         ))}
+        <ListItem button component="a" href="https://blog.notesforfrontliners.org">
+            <ListItemIcon><AnnouncementIcon/></ListItemIcon>
+            <ListItemText primary={"Blog"} />
+        </ListItem>
       </List>
     </div>
   );
