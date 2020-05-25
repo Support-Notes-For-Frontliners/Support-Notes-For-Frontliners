@@ -18,7 +18,7 @@ export default function HomeStatWidget({ firebase }) {
 
   React.useEffect(() => {
     orgStatsRef.on("value", gotStatData, errData);
-  }, []);
+  }, [orgStatsRef]);
 
   function gotStatData(data) {
     setOrgStats(data.val());
@@ -60,7 +60,7 @@ export default function HomeStatWidget({ firebase }) {
         <Typography variant="h3">
           {orgStats ? orgStats["sent_count"] : 67}
         </Typography>
-        <Typography noWrap>Notes Delivered</Typography>
+        <Typography >Notes Delivered</Typography>
       </Grid>
     </Grid>
   );
