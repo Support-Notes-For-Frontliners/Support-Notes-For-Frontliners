@@ -55,6 +55,12 @@ export default function FacilitySelector({stepperCallback, jsonKey, elementSelec
         setItemSelected(true);
         // console.log(e.currentTarget.id);
     }
+    function completedIndicator(enabled){
+        if(enabled){
+            return ""
+        }
+        return " (Completed)" 
+    }
 
     return (
         <Grid container className={classes.grid} spacing={2}>
@@ -75,7 +81,7 @@ export default function FacilitySelector({stepperCallback, jsonKey, elementSelec
                                         />
                                         <CardContent>
                                             <Typography gutterBottom variant="h5" component="h2">
-                                                {selectedHospital.name}
+                                                {selectedHospital.name + completedIndicator(selectedHospital.enabled)}
                                             </Typography>
                                             <Typography variant="body2" color="textSecondary" component="p">
                                                 {selectedHospital.description}
@@ -83,7 +89,7 @@ export default function FacilitySelector({stepperCallback, jsonKey, elementSelec
                                         </CardContent>
                                     </CardActionArea>
                                     <CardActions>
-                                        <Button onClick={handleInput} id={selectedHospital.name} size="small" color="primary">
+                                        <Button disabled={!selectedHospital.enabled} onClick={handleInput} id={selectedHospital.name} size="small" color="primary">
                                             Select
                                         </Button>
                                         {/* <Button size="small" color="primary">
