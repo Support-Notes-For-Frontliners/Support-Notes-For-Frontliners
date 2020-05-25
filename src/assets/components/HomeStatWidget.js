@@ -18,7 +18,7 @@ export default function HomeStatWidget({ firebase }) {
 
   React.useEffect(() => {
     orgStatsRef.on("value", gotStatData, errData);
-  }, [orgStatsRef]);
+  }, []);
 
   function gotStatData(data) {
     setOrgStats(data.val());
