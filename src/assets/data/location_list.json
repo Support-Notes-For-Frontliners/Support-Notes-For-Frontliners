@@ -57,7 +57,7 @@
             "description": "Located in downtown Bellevue behind Crossroads Shopping Center, Sunrise of Bellevue is senior living home in Washington. At the facility, registered nurses are on site 16 hours a day to support the health and safety of the seniors at the facility.",
             "img": "/images/sunrise-of-bellevue.jpg",
             "emphasis": false,
-            "enabled": true
+            "enabled": false
         },
         {
             "name": "Island House Assisted Living",

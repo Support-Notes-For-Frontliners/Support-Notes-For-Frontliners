@@ -25,6 +25,11 @@ const useStyles = makeStyles({
         backgroundColor: "#C8E8EA",
         boxShadow: "none"
     },
+    cardDisabled: {
+        maxWidth: 345,
+        bakcgroundColor: "#E4E4E4",
+        boxShadow: "none"
+    },
     media: {
         height: 140,
     },
@@ -45,6 +50,13 @@ export default function SelectFrontliner({ stepperCallback, elementSelected }) {
         // console.log(e.currentTarget.id);
     }
 
+    function completedIndicator(enabled){
+        if(enabled){
+            return ""
+        }
+        return " (Completed)" 
+    }
+
     const springProps = useSpring({ opacity: 1, from: { opacity: 0 } })
     return (
         <animated.div style={springProps}>
@@ -54,7 +66,7 @@ export default function SelectFrontliner({ stepperCallback, elementSelected }) {
                     <React.Fragment>
                         {frontliner_list["frontliners"].map((frontliner, index) => (
                             <Grid key={frontliner.name + "Card"} item>
-                                <Card id={frontliner.name} className={frontliner.name === elementSelected ? classes.cardSelected : classes.card} >
+                                <Card id={frontliner.name} className={frontliner.name === elementSelected ? classes.cardSelected : frontliner.enabled ? classes.card : classes.cardDisabled} >
                                 <CardActionArea>
                                 <CardMedia
                                         className={classes.media}
@@ -64,7 +76,7 @@ export default function SelectFrontliner({ stepperCallback, elementSelected }) {
                                     />
                                     <CardContent>
                                         <Typography gutterBottom variant="h5" component="h2">
-                                            {frontliner.name}
+                                            {frontliner.name + completedIndicator(frontliner.enabled)}
                                         </Typography>
                                         <Typography fontStyle="italic" variant="body2" color="textSecondary" component="p">
                                             {frontliner.description}
