@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Trevor K.",
+    "links": [{ "site": "https://github.com/trevorkw7", "icon": "dns" }],
+    "image": "trevor.jpg",
+    "role": "Founder"
+  },
+  {
+    "name": "Shrey A.",
+    "links": [{ "site": "https://shrey.ml", "icon": "account_circle" }],
+    "image": "shrey.jpeg",
+    "role": "Tech Operations"
+  },
+  {
+    "name": "Seiya K.",
+    "links": [{ "site": "https://github.com/seiyaK1803", "icon": "dns" }],
+    "image": "seiya.jpeg",
+    "role": "Data Management"
+  },
+  {
+    "name": "Aemarie J.",
+    "links": [],
+    "image": "aemarie.jpg",
+    "role": "Marketing"
+  },
+  {
+    "name": "Maggie Y.",
+    "links": [],
+    "image": "maggie.jpg",
+    "role": "Outreach"
+  }
+]
