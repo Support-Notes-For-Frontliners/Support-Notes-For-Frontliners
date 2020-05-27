@@ -83,7 +83,7 @@
     {
       "name": "Noel Women's House",
       "region": "Seattle",
-      "description": "Noel House Programs provides shleter, food and services for over 250 women experiancing homelessness. The workers at Noel are working hard to provide homeless women affected by the pandemeic nutritious meals and a safe place to sleep.",
+      "description": "Noel House Programs provides shelter, food, and services for over 250 women experiencing homelessness. The workers at Noel are working hard to provide homeless women affected by the pandemic nutritious meals and a safe place to sleep.",
       "img": "/images/noelhouseseattle.jpg",
       "emphasis": false,
       "enabled": true
@@ -91,7 +91,7 @@
     {
       "name": "Aloha Inn",
       "region": "Seattle",
-      "description": "The Aloha Inn is a resident managed transitional housing program for over 60 homeless adults and couples without children. Admist the pandemic, Aloha inn has provided essential services such as housing couseling, vision and dental care, and personal counseling to those affected by the COVID-19 pandemic.",
+      "description": "The Aloha Inn is a resident managed transitional housing program for over 60 homeless adults and couples without children. Amidst the pandemic, Aloha Inn has provided essential services such as housing counseling, vision, and dental care, and personal counseling to those affected by the COVID-19 pandemic.",
       "img": "/images/alohainn.jpg",
       "emphasis": false,
       "enabled": true
