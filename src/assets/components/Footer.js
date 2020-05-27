@@ -1,17 +1,15 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
-import Container from '@material-ui/core/Container';
-import Typography from './StyledTypography';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
+import Container from "@material-ui/core/Container";
+import Typography from "./StyledTypography";
 
 function Copyright() {
   return (
     <React.Fragment>
-      {'© '}
-      <Link color="inherit" >
-        Notes for Frontliners
-      </Link>{' '}
+      {"© "}
+      <Link color="inherit">Notes for Frontliners</Link>{" "}
       {new Date().getFullYear()}
     </React.Fragment>
   );
@@ -19,36 +17,36 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: "flex",
     backgroundColor: theme.palette.secondary.light,
-    overflow: 'hidden'
+    overflow: "hidden",
   },
   container: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
-    display: 'flex',
+    display: "flex",
   },
   iconsWrapper: {
     height: 120,
   },
   icons: {
-    display: 'flex',
+    display: "flex",
   },
   icon: {
     width: 48,
     height: 48,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: theme.palette.warning.main,
     marginRight: theme.spacing(1),
-    '&:hover': {
+    "&:hover": {
       backgroundColor: theme.palette.warning.dark,
     },
   },
   list: {
     margin: 0,
-    listStyle: 'none',
+    listStyle: "none",
     padding: 0,
   },
   listItem: {
@@ -56,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(0.5),
   },
 }));
-
 
 export default function AppFooter() {
   const classes = useStyles();
@@ -74,11 +71,25 @@ export default function AppFooter() {
               spacing={2}
             >
               <Grid item className={classes.icons}>
-                <a href="mailto:trevorkw7@gmail.com?Subject=Question%20About%20Your%20Website" className={classes.icon}>
-                  <img style={{height: "30px"}}src="/images/email-svgrepo-com.svg" alt="Email" />
+                <a
+                  href="mailto:support@notesforfrontliners.org?Subject=Question%20About%20Your%20Website"
+                  className={classes.icon}
+                >
+                  <img
+                    style={{ height: "30px" }}
+                    src="/images/email-svgrepo-com.svg"
+                    alt="Email"
+                  />
                 </a>
-                <a href="https://www.instagram.com/notesforfrontliners/" className={classes.icon}>
-                  <img style={{height: "30px"}} src="/images/instagram-svgrepo-com.svg" alt="Instagram" />
+                <a
+                  href="https://www.instagram.com/notesforfrontliners/"
+                  className={classes.icon}
+                >
+                  <img
+                    style={{ height: "30px" }}
+                    src="/images/instagram-svgrepo-com.svg"
+                    alt="Instagram"
+                  />
                 </a>
               </Grid>
               <Grid item>
@@ -101,15 +112,20 @@ export default function AppFooter() {
           </Grid> */}
           <Grid item xs={12}>
             <Typography variant="caption">
-              {'Icons made by '}
-              <Link rel="sponsored" title="SVG Repo" style={{color:"black"}}>
+              {"Icons made by "}
+              <Link rel="sponsored" title="SVG Repo" style={{ color: "black" }}>
                 SVG Repo
               </Link>
-              {' from '}
-              <Link  style={{color:"black"}}href="https://www.svgrepo.com/" rel="sponsored" title="Flaticon">
+              {" from "}
+              <Link
+                style={{ color: "black" }}
+                href="https://www.svgrepo.com/"
+                rel="sponsored"
+                title="Flaticon"
+              >
                 www.svgrepo.com/
               </Link>
-              {' is licensed by via CC0'}
+              {" is licensed by via CC0"}
             </Typography>
           </Grid>
         </Grid>
