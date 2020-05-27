@@ -37,7 +37,7 @@ export default function LoadNotes(props) {
     const [loading, setLoading] = React.useState(false);
 
     const formRef = props.firebase.db.ref("formData");
-    let query = formRef.orderByChild(props.type).equalTo(true).limitToLast(100)
+    let query = formRef.orderByChild(props.type).equalTo(true).limitToLast(101)
 
     React.useEffect(() => {
         getNotes();
@@ -71,27 +71,36 @@ export default function LoadNotes(props) {
         setData(Object.values(dataIn.val()).reverse());
     }
 
+    function checkNotes(notes, index){
+        
+            if(notes.sender === "A Follower of Quarantine Guidelines"){
+                return null;
+            } else {
+                return (
+                    <Grid item key={index} xs={12} sm={6} md={4} lg={3} >
+                        <Paper variant="outlined" className={classes.sticky_note} style={{ backgroundColor: getColor() }}>
+                        <Typography variant="body2" align="left">Dear {notes.frontliner.substring(0, notes.frontliner.length - 1)} </Typography>
+                        <br />
+                        <Typography variant="body2" align="left">
+                            {notes.note.replace(/^Dear[^]{0,}er([s\s]),\s?/gi, "")}
+                        </Typography>
+                        <br />
+                        <Typography variant="body2" align="right">
+                            -From {notes.sender}
+                        </Typography>
+                        </Paper>
+                    </Grid>
+                );
+            }
+    }
+
 
 
     return (
         <div>
             <Grid container className={classes.root} justify="center" alignItems="center" direction="row" spacing={2}>
                 <ThemeProvider theme={theme}>
-                    {data.map((notes, index) => (
-                        <Grid item key={index} xs={12} sm={6} md={4} lg={3} >
-                            <Paper variant="outlined" className={classes.sticky_note} style={{ backgroundColor: getColor() }}>
-                                <Typography variant="body2" align="left">Dear {notes.frontliner.substring(0, notes.frontliner.length - 1)} </Typography>
-                                <br />
-                                <Typography variant="body2" align="left">
-                                    {notes.note.replace(/^Dear[^]{0,}er([s\s]),\s?/gi, "")}
-                                </Typography>
-                                <br />
-                                <Typography variant="body2" align="right">
-                                    -From {notes.sender}
-                                </Typography>
-                            </Paper>
-                        </Grid>
-                    ))}
+                    {data.map((notes, index) => (checkNotes(notes, index)))}
                 </ThemeProvider>
             </Grid>
             <Typography variant="h1" style={{ color: "#000000" }}>{console.log(loading)}</Typography>
