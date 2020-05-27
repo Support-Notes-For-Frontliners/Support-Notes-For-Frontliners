@@ -87,7 +87,7 @@ export default function LoadNotes(props) {
                                 </Typography>
                                 <br />
                                 <Typography variant="body2" align="right">
-                                    -From a {notes.sender}
+                                    -From {notes.sender}
                                 </Typography>
                             </Paper>
                         </Grid>
