@@ -14,7 +14,7 @@
   {
     "name": "Seiya K.",
     "links": [{ "site": "https://github.com/seiyaK1803", "icon": "dns" }],
-    "image": "seiya.jpeg",
+    "image": "seiya.jpg",
     "role": "Data Management"
   },
   {
@@ -27,6 +27,6 @@
     "name": "Maggie Y.",
     "links": [],
     "image": "maggie.jpg",
-    "role": "Outreach"
+    "role": "Marketing"
   }
 ]

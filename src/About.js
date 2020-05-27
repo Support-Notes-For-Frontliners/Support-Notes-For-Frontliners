@@ -143,16 +143,19 @@ function ProductHero(props, { parentCallback }) {
                   <OtherWebsite />
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography
+                  <StyledTypography
                     variant="h4"
+                    marked="center"
+                    className={classes.h5}
+                    align="center"
                     style={{
-                      display: "flex",
+                      // display: "flex",
                       justifyContent: "center",
                       alignItems: "center",
                     }}
                   >
                     Meet the Team!
-                  </Typography>
+                  </StyledTypography>
                 </Grid>
                 <Grid
                   container
