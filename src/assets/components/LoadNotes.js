@@ -79,7 +79,7 @@ export default function LoadNotes(props) {
                 return (
                     <Grid item key={index} xs={12} sm={6} md={4} lg={3} >
                         <Paper variant="outlined" className={classes.sticky_note} style={{ backgroundColor: getColor() }}>
-                        <Typography variant="body2" align="left">Dear {notes.frontliner.substring(0, notes.frontliner.length - 1)} </Typography>
+                        <Typography variant="body2" align="left">Dear {notes.frontliner.substring(0, notes.frontliner.length - 1)}, </Typography>
                         <br />
                         <Typography variant="body2" align="left">
                             {notes.note.replace(/^Dear[^]{0,}er([s\s]),\s?/gi, "")}
