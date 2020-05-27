@@ -1,83 +1,108 @@
 {
-    "Health Care Workers":[
+  "Health Care Workers": [
+    {
+      "name": "EvergreenHealth Medical Center",
+      "region": "Kirkland",
+      "description": "Founded in 1972, EvergreenHealth has served nearly 850,000 residents in the north King and south Snohomish counties. During the initial outbreak of the coronavirus, Evergreen became one of the first hospitals to respond to the epicenter of cases clustered in the Kirkland region.  ",
+      "img": "/images/evergreen_health.png",
+      "emphasis": true,
+      "enabled": true
+    },
+    {
+      "name": "Harborview Medical Center",
+      "region": "Seattle",
+      "description": "Harborview Medical Center is a comprehensive healthcare facility dedicated to providing specialized care for a broad spectrum of patients from throughout the Pacific Northwest, including the most vulnerable residents of King County.",
+      "img": "/images/harborview_seattle.jpg",
+      "emphasis": false,
+      "enabled": true
+    },
 
-        {
-            "name": "EvergreenHealth Medical Center",
-            "region": "Kirkland",
-            "description": "Founded in 1972, EvergreenHealth has served nearly 850,000 residents in the north King and south Snohomish counties. During the initial outbreak of the coronavirus, Evergreen became one of the first hospitals to respond to the epicenter of cases clustered in the Kirkland region.  ",
-            "img": "/images/evergreen_health.png",
-            "emphasis": true, 
-            "enabled": true
+    {
+      "name": "Seattle Children's Hospital",
+      "region": "Seattle",
+      "description": "The Seattle Children's Hospital specializes in the care of infants, children, teens, and young adults aged 0-21 in several specialties.",
+      "img": "/images/seattle_childrens_seattle.jpg",
+      "emphasis": false,
+      "enabled": true
+    },
 
-        },
-        {
-            "name": "Harborview Medical Center",
-            "region": "Seattle",
-            "description": "Harborview Medical Center is a comprehensive healthcare facility dedicated to providing specialized care for a broad spectrum of patients from throughout the Pacific Northwest, including the most vulnerable residents of King County.",
-            "img": "/images/harborview_seattle.jpg",
-            "emphasis": false,
-            "enabled": true
+    {
+      "name": "Virginia Mason Hospital and Seattle Medical Center",
+      "region": "Seattle",
+      "description": "Virginia Mason operates an acute care hospital in Seattle, licensed for 336 beds, which includes one of the region's busiest emergency departments.",
+      "img": "/images/virginia_mason_seattle.jpg",
+      "emphasis": false,
+      "enabled": true
+    },
 
-        },
-        
-        
-        {
-            "name": "Seattle Children's Hospital",
-            "region": "Seattle",
-            "description": "The Seattle Children's Hospital specializes in the care of infants, children, teens, and young adults aged 0-21 in several specialties.",
-            "img": "/images/seattle_childrens_seattle.jpg",
-            "emphasis": false,
-            "enabled": true
-        },
-        
-        {
-            "name": "Virginia Mason Hospital and Seattle Medical Center",
-            "region": "Seattle",
-            "description": "Virginia Mason operates an acute care hospital in Seattle, licensed for 336 beds, which includes one of the region's busiest emergency departments.",
-            "img": "/images/virginia_mason_seattle.jpg",
-            "emphasis": false,
-            "enabled": true
+    {
+      "name": "Overlake Medical Center & Clinics",
+      "region": "Seattle",
+      "description": "Overlake Medical Center is a 349-bed, nonprofit regional medical center offering a full range of advanced medical services to the Puget Sound region. Led by a volunteer board of trustees, we employ nearly 3,000 people and have some 1,000 active and courtesy providers on our medical staff, including more than 200 providers who are employed by the organization.",
+      "img": "/images/overlake.jpg",
+      "emphasis": false,
+      "enabled": true
+    }
+  ],
 
-        },
-        
-        {
-            "name": "Overlake Medical Center & Clinics",
-            "region": "Seattle",
-            "description": "Overlake Medical Center is a 349-bed, nonprofit regional medical center offering a full range of advanced medical services to the Puget Sound region. Led by a volunteer board of trustees, we employ nearly 3,000 people and have some 1,000 active and courtesy providers on our medical staff, including more than 200 providers who are employed by the organization.",
-            "img": "/images/overlake.jpg",
-            "emphasis": false,
-            "enabled": true
-        }
-    ],
-
-    "Nursing Home Workers":[
-        {
-            "name": "Sunrise Senior Living: Bellevue",
-            "region": "Seattle",
-            "description": "Located in downtown Bellevue behind Crossroads Shopping Center, Sunrise of Bellevue is senior living home in Washington. At the facility, registered nurses are on site 16 hours a day to support the health and safety of the seniors at the facility.",
-            "img": "/images/sunrise-of-bellevue.jpg",
-            "emphasis": false,
-            "enabled": false
-        },
-        {
-            "name": "Island House Assisted Living",
-            "region": "Seattle",
-            "description": " Located near I-90 in the heart of Town Center, Island House Assisted Living is a senior living community in Mercer Island, WA. ",
-            "img": "/images/island-house.jpg",
-            "emphasis": false,
-            "enabled": false
-        },
-        {
-            "name": "Sunrise Senior Living: Mercer Island",
-            "region": "Seattle",
-            "description": "Located on beautiful Mercer Island in Lake Washington, Sunrise of Mercer Island is senior living home in Washington. At the facility, registered nurses and designated care managers are on site 16 hours a day to support the health and safety of the seniors at the facility.",
-            "img": "/images/sunrise-of-mercer-island.jpg",
-            "emphasis": false,
-            "enabled": false
-        }
-        
-        
-    ]
-
-
+  "Nursing Home Workers": [
+    {
+      "name": "Sunrise Senior Living: Bellevue",
+      "region": "Seattle",
+      "description": "Located in downtown Bellevue behind Crossroads Shopping Center, Sunrise of Bellevue is senior living home in Washington. At the facility, registered nurses are on site 16 hours a day to support the health and safety of the seniors at the facility.",
+      "img": "/images/sunrise-of-bellevue.jpg",
+      "emphasis": false,
+      "enabled": false
+    },
+    {
+      "name": "Island House Assisted Living",
+      "region": "Seattle",
+      "description": " Located near I-90 in the heart of Town Center, Island House Assisted Living is a senior living community in Mercer Island, WA. ",
+      "img": "/images/island-house.jpg",
+      "emphasis": true,
+      "enabled": true
+    },
+    {
+      "name": "Sunrise Senior Living: Mercer Island",
+      "region": "Seattle",
+      "description": "Located on beautiful Mercer Island in Lake Washington, Sunrise of Mercer Island is senior living home in Washington. At the facility, registered nurses and designated care managers are on site 16 hours a day to support the health and safety of the seniors at the facility.",
+      "img": "/images/sunrise-of-mercer-island.jpg",
+      "emphasis": true,
+      "enabled": true
+    }
+  ],
+  "Homeless Shelter Workers": [
+    {
+      "name": "Mary's Place Seattle",
+      "region": "Seattle",
+      "description": "Located in the heart of Downtown Seattle, Mary's Place helps women and families to move out of homelessness into a more stable life, providing meals, showers, and laundry facilities. The workers at Mary's Place Seattle are working hard to open new facilities while to handle the new influx of homeless caused by the economic downfall of the COVID-19 pandemic.",
+      "img": "/images/marysplace.jpeg",
+      "emphasis": false,
+      "enabled": true
+    },
+    {
+      "name": "Noel Women's House",
+      "region": "Seattle",
+      "description": "Noel House Programs provides shleter, food and services for over 250 women experiancing homelessness. The workers at Noel are working hard to provide homeless women affected by the pandemeic nutritious meals and a safe place to sleep.",
+      "img": "/images/noelhouseseattle.jpg",
+      "emphasis": false,
+      "enabled": true
+    },
+    {
+      "name": "Aloha Inn",
+      "region": "Seattle",
+      "description": "The Aloha Inn is a resident managed transitional housing program for over 60 homeless adults and couples without children. Admist the pandemic, Aloha inn has provided essential services such as housing couseling, vision and dental care, and personal counseling to those affected by the COVID-19 pandemic.",
+      "img": "/images/alohainn.jpg",
+      "emphasis": false,
+      "enabled": true
+    },
+    {
+      "name": "Sacred Heart",
+      "region": "Seattle",
+      "description": "Sacred Heart Shelter provides safe, comfortable shelter to families experiencing the crisis of homelessness. Caring for families with minor children (18 years or younger), Sacred Heart Shelter has been a crucial aid to the homeless Seattle community affected by COVID-19.",
+      "img": "/images/sacredheartseattle.jpg",
+      "emphasis": false,
+      "enabled": true
+    }
+  ]
 }
