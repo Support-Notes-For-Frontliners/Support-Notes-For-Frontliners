@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import StyledTypography from './assets/components/StyledTypography'
-import AboutLayout from './assets/components/AboutLayout';
+import PageTitleLayout from './assets/components/PageTitleLayout';
 import { Grid, Container } from '@material-ui/core';
 import Footer from './assets/components/Footer'
 import OtherWebsite from './assets/components/OtherWebsite'
@@ -58,7 +58,7 @@ function ProductHero(props, { parentCallback }) {
   return (
     <animated.div style={springProps}>
     <div>
-      <AboutLayout backgroundClassName={classes.background}>
+      <PageTitleLayout backgroundClassName={classes.background}>
         {/* Increase the network loading priority of the background image. */}
         <img style={{ display: 'none' }} src={backgroundImage} alt="increase priority" />
         <StyledTypography color="inherit" align="center" variant="h2" marked="center">
@@ -67,7 +67,7 @@ function ProductHero(props, { parentCallback }) {
         <StyledTypography color="inherit" align="center" variant="h5" className={classes.h5}>
         Support Notes For Frontliners is a note submission platform that lets people show their support the heroes of our community. This project was created in response to the mental stress and trauma that continues to affect frontline workers who risk their lives daily to battle against the COVID-19 disease. Contribute to the project by writing an encouraging note to a frontliner to let them know that they are appreciated and are not alone in this fight.
       </StyledTypography>
-      </AboutLayout>
+      </PageTitleLayout>
 
       <section className={classes.root}>
         <Container className={classes.container}>

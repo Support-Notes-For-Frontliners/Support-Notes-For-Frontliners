@@ -20,6 +20,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link'
 import {Link as RouterLink} from 'react-router-dom'
+import ImageIcon from '@material-ui/icons/Image';
 
 const drawerWidth = 240;
 
@@ -73,15 +74,15 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  const IconList = [<HomeIcon/>, <MailIcon/>, <InfoIcon/>]
-  const RefList = ["/", "/note",  "/about"]
+  const IconList = [<HomeIcon/>, <MailIcon/>, <ImageIcon/>, <InfoIcon/>]
+  const RefList = ["/", "/note", "/gallery", "/about"]
 
   const drawer = (
     <div>
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['Home', 'Write a Note', 'About'].map((text, index) => (
+        {['Home', 'Write a Note', 'Gallery', 'About'].map((text, index) => (
           <ListItemLink button component={RouterLink} to={RefList[index]}>
             <ListItemIcon>{IconList[index]}</ListItemIcon>
             <ListItemText primary={text} />
