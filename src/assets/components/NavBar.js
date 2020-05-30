@@ -71,7 +71,7 @@ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
            </IconButton>
             <Typography variant="h6" className={classes.title} noWrap>
                 <Link underline="none" component={RouterLink} to="/" style = {{color: "white" , marginLeft: "5px"}}> 
-                Support Notes For Frontliners
+                Notes For Frontliners
                 </Link>
             </Typography>
             <>
@@ -84,13 +84,13 @@ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
                 </Link>
             </Typography>
             <Typography className = {classes.links}  variant="h6">
-                <Link underline="none" component={RouterLink} to="/gallery"  style= {{color: "white" }}> 
-                Gallery
+                <Link underline="none" component={RouterLink} to="/note-gallery"  style= {{color: "white" }}> 
+                Note Gallery
                 </Link>
             </Typography>
             <Typography className = {classes.links}  variant="h6">
                 <Link underline="none" href="https://blog.notesforfrontliners.org" target="_blank" style= {{color: "white" }}> 
-                Blog
+                News
                 </Link>
             </Typography>
             <Typography className = {classes.links} variant="h6">

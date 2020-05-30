@@ -56,7 +56,7 @@ function ProductValues(props) {
         <Grid container spacing={5}>
             <Grid item xs={12}>
             <Typography color="inherit" align="center" variant="h4" marked="center">
-        How It Works
+        The 3 Step Process
       </Typography>
             </Grid>
           <Grid item xs={12} md={4}>

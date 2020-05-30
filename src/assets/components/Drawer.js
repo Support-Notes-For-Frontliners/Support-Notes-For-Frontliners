@@ -75,14 +75,14 @@ function ResponsiveDrawer(props) {
   };
 
   const IconList = [<HomeIcon/>, <MailIcon/>, <ImageIcon/>, <InfoIcon/>]
-  const RefList = ["/", "/note", "/gallery", "/about"]
+  const RefList = ["/", "/note", "/note-gallery", "/about"]
 
   const drawer = (
     <div>
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['Home', 'Write a Note', 'Gallery', 'About'].map((text, index) => (
+        {['Home', 'Write a Note', 'Note Gallery', 'About'].map((text, index) => (
           <ListItemLink button component={RouterLink} to={RefList[index]}>
             <ListItemIcon>{IconList[index]}</ListItemIcon>
             <ListItemText primary={text} />
@@ -90,7 +90,7 @@ function ResponsiveDrawer(props) {
         ))}
         <ListItem button component="a" href="https://blog.notesforfrontliners.org">
             <ListItemIcon><AnnouncementIcon/></ListItemIcon>
-            <ListItemText primary={"Blog"} />
+            <ListItemText primary={"News"} />
         </ListItem>
       </List>
     </div>
