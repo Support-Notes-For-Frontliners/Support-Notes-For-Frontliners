@@ -81,6 +81,7 @@ export default function ProgressStepper(props) {
 
   const steps = getSteps();
 
+
   let formRef = props.firebase.db.ref("formData");
 
   React.useEffect(()=>{
@@ -101,11 +102,11 @@ export default function ProgressStepper(props) {
 
     switch (step) {
       case 0:
-        return <SelectFrontliner elementSelected={cardSelected} stepperCallback={handleFrontliner} />
+        return <SelectFrontliner firebase={props.firebase} elementSelected={cardSelected} stepperCallback={handleFrontliner} />
       case 1:
-        return <SelectLocation elementSelected={facility} locationType={cardSelected} stepperCallback={handleLocation} />
+        return <SelectLocation firebase={props.firebase} elementSelected={facility} locationType={cardSelected} stepperCallback={handleLocation} />
       case 2:
-        return <WriteNote stepperCallbackDescription={handleSender} stepperCallbackNote={handleNote} recipient={cardSelected} />
+        return <WriteNote firebase={props.firebase} stepperCallbackDescription={handleSender} stepperCallbackNote={handleNote} recipient={cardSelected} />
       default:
         return 'Unknown step'
     }

@@ -40,15 +40,32 @@ const useStyles = makeStyles({
 
 
 
-export default function SelectFrontliner({ stepperCallback, elementSelected }) {
-
+export default function SelectFrontliner({ firebase, stepperCallback, elementSelected }) {
+    const STORAGE = firebase.storage.refFromURL("gs://support-notes-for-frontliners.appspot.com/data/frontliner_list.json")
     const classes = useStyles();
+
+    const[frontliner_list, setFrontliner_List ] = React.useState(null);
+    const[isLoaded, setIsLoaded] = React.useState(false);
 
     function handleInput(e) {
         e.preventDefault();
         stepperCallback(e.currentTarget.id);
         // console.log(e.currentTarget.id);
     }
+
+    React.useEffect(() => {
+        async function fetchData(){
+          const url = await STORAGE.getDownloadURL();
+          console.log(url)
+          const response = await fetch(url);
+          console.log(response)
+          const json = await response.json();
+          console.log(json)
+          setFrontliner_List(json);
+          setIsLoaded(true);
+        }
+        fetchData()
+      },[]);
 
     function completedIndicator(enabled){
         if(enabled){
@@ -64,7 +81,7 @@ export default function SelectFrontliner({ stepperCallback, elementSelected }) {
             <Grid item xs={12}>
                 <Grid container justify="center" spacing={3}>
                     <React.Fragment>
-                        {frontliner_list["frontliners"].map((frontliner, index) => (
+                        {isLoaded ? frontliner_list["frontliners"].map((frontliner, index) => (
                             <Grid key={frontliner.name + "Card"} item>
                                 <Card id={frontliner.name} className={frontliner.name === elementSelected ? classes.cardSelected : frontliner.enabled ? classes.card : classes.cardDisabled} >
                                 <CardActionArea>
@@ -90,7 +107,7 @@ export default function SelectFrontliner({ stepperCallback, elementSelected }) {
                                 </CardActions>
                                 </Card>
                             </Grid>
-                        ))}
+                        )) : <div/>}
                         {/* <Grid key="Health Care Worker Card" item>
                             <Card className={classes.card} >
                                 <CardActionArea>
