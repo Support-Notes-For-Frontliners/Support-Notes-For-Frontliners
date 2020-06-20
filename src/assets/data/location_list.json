@@ -1,11 +1,37 @@
 {
   "Health Care Workers": [
     {
+      "name": "Virginia Mason Hospital and Seattle Medical Center",
+      "region": "Seattle",
+      "description": "Virginia Mason operates an acute care hospital in Seattle, licensed for 336 beds, which includes one of the region's busiest emergency departments.",
+      "img": "/images/virginia_mason_seattle.jpg",
+      "emphasis": true,
+      "enabled": true
+    },
+   
+
+    {
+      "name": "Swedish First HIll",
+      "region": "Seattle",
+      "description": "The Swedish First Hill Campus, located at 747 Broadway in Seattle, is one of the most modern medical facilities in Western Washington. Swedish First Hill is currently playing an important role in testing potential COVID-19 patients in the greater Seattle area. ",
+      "img": "/images/swedish_firsthill_seattle.jpg",
+      "emphasis": false,
+      "enabled": true
+    },
+    {
+      "name": "UW Medical Center: Montlake",
+      "region": "Seattle",
+      "description": "UW Montlake is a medical center that employs over 5,500 staff and has palyed a crucial role in caring for patients. Furthermore, UW Montlake has been ranked as the No. 1 hospital in Seattle and Washington State since 2012 according to US News.",
+      "img": "/images/uw_montlake_seattle.jpg",
+      "emphasis": false,
+      "enabled": true
+    },
+    {
       "name": "EvergreenHealth Medical Center",
       "region": "Kirkland",
       "description": "Founded in 1972, EvergreenHealth has served nearly 850,000 residents in the north King and south Snohomish counties. During the initial outbreak of the coronavirus, Evergreen became one of the first hospitals to respond to the epicenter of cases clustered in the Kirkland region.  ",
       "img": "/images/evergreen_health.png",
-      "emphasis": true,
+      "emphasis": false,
       "enabled": true
     },
     {
@@ -13,33 +39,6 @@
       "region": "Seattle",
       "description": "Harborview Medical Center is a comprehensive healthcare facility dedicated to providing specialized care for a broad spectrum of patients from throughout the Pacific Northwest, including the most vulnerable residents of King County.",
       "img": "/images/harborview_seattle.jpg",
-      "emphasis": false,
-      "enabled": true
-    },
-
-    {
-      "name": "Seattle Children's Hospital",
-      "region": "Seattle",
-      "description": "The Seattle Children's Hospital specializes in the care of infants, children, teens, and young adults aged 0-21 in several specialties.",
-      "img": "/images/seattle_childrens_seattle.jpg",
-      "emphasis": false,
-      "enabled": true
-    },
-
-    {
-      "name": "Virginia Mason Hospital and Seattle Medical Center",
-      "region": "Seattle",
-      "description": "Virginia Mason operates an acute care hospital in Seattle, licensed for 336 beds, which includes one of the region's busiest emergency departments.",
-      "img": "/images/virginia_mason_seattle.jpg",
-      "emphasis": false,
-      "enabled": true
-    },
-
-    {
-      "name": "Overlake Medical Center & Clinics",
-      "region": "Seattle",
-      "description": "Overlake Medical Center is a 349-bed, nonprofit regional medical center offering a full range of advanced medical services to the Puget Sound region. Led by a volunteer board of trustees, we employ nearly 3,000 people and have some 1,000 active and courtesy providers on our medical staff, including more than 200 providers who are employed by the organization.",
-      "img": "/images/overlake.jpg",
       "emphasis": false,
       "enabled": true
     }
