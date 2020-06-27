@@ -11,7 +11,7 @@ import FirebaseContext from './FireBase/FireBaseContext';
 
 
 const backgroundImage =
-  'https://calmatters.org/wp-content/uploads/sites/2/2020/04/iStock_masks_illustration_01.jpg?fit=2000%2C1333';
+  '/images/hero_background.jpg';
 
 const styles = (theme) => ({
   background: {
