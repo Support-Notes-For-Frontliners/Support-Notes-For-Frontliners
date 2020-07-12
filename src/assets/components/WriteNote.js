@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
-import { Typography, Grid, createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { Typography, Grid, createMuiTheme, ThemeProvider} from '@material-ui/core';
 import { useSpring, animated } from 'react-spring'
 
 
@@ -41,7 +41,7 @@ const theme = createMuiTheme({
 
 const height = 535
 
-export default function NoteInterface({recipient, stepperCallbackNote, stepperCallbackDescription}) {
+export default function NoteInterface({recipient, stepperCallbackNote, stepperCallbackDescription, stepperCallbackReferrer}) {
   const [noteContent, setNoteContent] = React.useState(null)
   const [writerDescription, setWriterDescription] = React.useState(null);
   
@@ -60,6 +60,11 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
     stepperCallbackDescription(event.target.value);
   }
 
+  function handleReferrerChange(event){
+    event.preventDefault()
+    stepperCallbackReferrer(event.target.value)
+  }
+
   const springProps = useSpring({ opacity: 1, from: { opacity: 0 } })
 
   return (
@@ -70,10 +75,7 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
       <Grid item sm={12} md={2}>
           <Paper variant="outlined" className={classes.sticky_note} >
             <Typography variant="h6" align="center" gutterBottom>What To Do</Typography>
-            
-            <Typography>
-            • Make the note a good length! Spend 2-5 sentences to write something nice, thoughtful, and encouraging!
-            </Typography>
+            <Typography>• Make the note a good length! Spend 2-5 sentences to write something nice, thoughtful, and encouraging!</Typography>
             <Typography>• To make the note more personal, adress the person as an individual</Typography>
             <Typography>• Address the note anonymously with context when writing in the "Who You Are" box ("From a Teacher in Ballard") </Typography>
           </Paper>
@@ -82,8 +84,6 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
             <Typography>• Don't give your personal information (First and Last Name)!</Typography>
             <Typography>• Don't repeat the built in "Dear" and "From" statements built into the note. Take a look at the "note preview" to see how your note will appear when sent.</Typography>
             <Typography>• Don't talk about a limited time promotion or event. These notes take time to send so the note maybe be rendered irrelevant by the time it is received. </Typography>
-            
-           
           </Paper>
         </Grid>
         </ThemeProvider>
@@ -130,13 +130,23 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
         <TextField
           id="Writer Description"
           label="Who You Are (No Personal Details)"
-          rows={4}
           variant="outlined"
           fullWidth
           style={{marginTop:"5px"}}
           
           onChange={handleDescriptionChange}
         />
+        {window.location.pathname === "/note" || 
+          <TextField
+            id="Referrer"
+            label="Who Referred You (Their Name)"
+            variant="outlined"
+            fullWidth
+            style={{marginTop:"10px", width:300}}
+
+            onChange={handleReferrerChange}
+          />
+        }
         </div>
         </Grid>
       </Grid>

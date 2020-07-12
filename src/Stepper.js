@@ -78,6 +78,7 @@ export default function ProgressStepper(props) {
   //Step 3:
   const [noteContent, setNoteContent] = React.useState(null);
   const [senderName, setSenderName] = React.useState(null);
+  const [referrerName, setReferrerName] = React.useState(null);
 
   const steps = getSteps();
 
@@ -89,13 +90,24 @@ export default function ProgressStepper(props) {
 
 
   React.useEffect(() => {
+    
+    //if normal fields are filled
     if (noteContent !== null && senderName !== null && noteContent !== "" && senderName !== "") {
-      setBtnDisabled(false)
+      //if on ref note page and refnote not filled 
+      if(window.location.pathname !== "/note" && (referrerName === null || referrerName === "")){
+        setBtnDisabled(true);
+      }
+      //if all filled
+      else{
+        setBtnDisabled(false)
+      }
     }
+    //if normal fields are empty
     else {
       setBtnDisabled(true)
     }
-  }, [noteContent, senderName])
+
+  }, [noteContent, senderName, referrerName])
 
   function getStepContent(step) {
 
@@ -105,7 +117,7 @@ export default function ProgressStepper(props) {
       case 1:
         return <SelectLocation elementSelected={facility} locationType={cardSelected} stepperCallback={handleLocation} />
       case 2:
-        return <WriteNote stepperCallbackDescription={handleSender} stepperCallbackNote={handleNote} recipient={cardSelected} />
+        return <WriteNote stepperCallbackDescription={handleSender} stepperCallbackNote={handleNote} stepperCallbackReferrer={handleReferrer} recipient={cardSelected} />
       default:
         return 'Unknown step'
     }
@@ -129,6 +141,13 @@ export default function ProgressStepper(props) {
       setSenderName(null)
     }
     setSenderName(senderData);
+  }
+  function handleReferrer(referrerData) {
+    if (referrerData === "") {
+      setReferrerName(null)
+    }
+    setReferrerName(referrerData);
+    console.log(referrerData)
   }
 
   const totalSteps = () => {
@@ -195,6 +214,7 @@ export default function ProgressStepper(props) {
       facility: facility,
       note: noteContent,
       sender: senderName,
+      referrer: referrerName,
       approved: false,
       sent: false
     }
