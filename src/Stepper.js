@@ -90,13 +90,24 @@ export default function ProgressStepper(props) {
 
 
   React.useEffect(() => {
+    
+    //if normal fields are filled
     if (noteContent !== null && senderName !== null && noteContent !== "" && senderName !== "") {
-      setBtnDisabled(false)
+      //if on ref note page and refnote not filled 
+      if(window.location.pathname !== "/note" && (referrerName === null || referrerName === "")){
+        setBtnDisabled(true);
+      }
+      //if all filled
+      else{
+        setBtnDisabled(false)
+      }
     }
+    //if normal fields are empty
     else {
       setBtnDisabled(true)
     }
-  }, [noteContent, senderName])
+
+  }, [noteContent, senderName, referrerName])
 
   function getStepContent(step) {
 
