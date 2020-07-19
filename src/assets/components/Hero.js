@@ -51,7 +51,7 @@ function ProductHero(props) {
         Show Frontline Workers That We Care
       </StyledTypography>
       <StyledTypography color="inherit" align="center" variant="h5" className={classes.h5}>
-      Join the movement in supporting the mental health of our frontline workers, one note at a time.
+      Our mission is to support workers who risk their lives daily to fight against the COVID-19 pandemic.
       </StyledTypography>
       
       <FirebaseContext.Consumer >

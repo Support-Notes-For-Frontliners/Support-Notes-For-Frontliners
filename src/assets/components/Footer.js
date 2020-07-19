@@ -125,7 +125,7 @@ export default function AppFooter() {
               >
                 www.svgrepo.com/
               </Link>
-              {" and are licensed by via CC0"}
+              {" is licensed by via CC0"}
             </Typography>
           </Grid>
         </Grid>
