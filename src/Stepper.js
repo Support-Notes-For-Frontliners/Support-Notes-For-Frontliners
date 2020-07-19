@@ -1,27 +1,25 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import SelectLocation from './assets/components/SelectLocation'
-import SelectFrontliner from './assets/components/SelectFrontliner'
-import WriteNote from './assets/components/WriteNote.js'
-import { Grid } from '@material-ui/core';
-import {animateScroll as scroll} from 'react-scroll';
-import { Prompt } from 'react-router'
-
-
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepButton from "@material-ui/core/StepButton";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import SelectLocation from "./assets/components/SelectLocation";
+import SelectFrontliner from "./assets/components/SelectFrontliner";
+import WriteNote from "./assets/components/WriteNote.js";
+import { Grid } from "@material-ui/core";
+import { animateScroll as scroll } from "react-scroll";
+import { Prompt } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: "100%",
   },
   cards: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(3),
-    marginRight: theme.spacing(3)
+    marginRight: theme.spacing(3),
   },
   button: {
     margin: theme.spacing(1),
@@ -30,22 +28,22 @@ const useStyles = makeStyles((theme) => ({
   nextbutton: {
     margin: theme.spacing(1),
     position: "relative",
-    float: "right"
+    float: "right",
   },
   backbutton: {
     margin: theme.spacing(1),
     position: "relative",
-    float: "right"
+    float: "right",
   },
   completed: {
-    display: 'inline-block',
+    display: "inline-block",
   },
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
   containerDiv: {
-    margin: 'auto'
+    margin: "auto",
   },
   image: {
     flex: 0,
@@ -56,20 +54,22 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     width: null,
     height: null,
-  }
+  },
 }));
 
 function getSteps() {
-  return ['Select a Frontliner', 'Select a Location', 'Write an Encouraging Note'];
+  return [
+    "Select a Frontliner",
+    "Select a Location",
+    "Write an Encouraging Note",
+  ];
 }
 
-
 export default function ProgressStepper(props) {
-
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const [completed, setCompleted] = React.useState({});
-  const [btnDisabled, setBtnDisabled] = React.useState(true)
+  const [btnDisabled, setBtnDisabled] = React.useState(true);
 
   //Step 1:
   const [cardSelected, setCardSelected] = React.useState(null);
@@ -82,32 +82,71 @@ export default function ProgressStepper(props) {
   const steps = getSteps();
 
   let formRef = props.firebase.db.ref("formData");
-
-  React.useEffect(()=>{
-    scroll.scrollTo(0);
-  }, [activeStep])
-
+  const [locationData, setLocationData] = React.useState(null);
+  let locationRef = props.firebase.db.ref("locationData");
 
   React.useEffect(() => {
-    if (noteContent !== null && senderName !== null && noteContent !== "" && senderName !== "") {
-      setBtnDisabled(false)
+    locationRef.on("value", gotData, errData);
+  }, []);
+  React.useEffect(() => {
+    scroll.scrollTo(0);
+  }, [activeStep]);
+
+  function errData(err) {
+    console.log("Error!");
+    console.log(err);
+  }
+
+  function gotData(dataIn) {
+    setLocationData(dataIn.val());
+  }
+
+  React.useEffect(() => {
+    if (
+      noteContent !== null &&
+      senderName !== null &&
+      noteContent !== "" &&
+      senderName !== ""
+    ) {
+      setBtnDisabled(false);
+    } else {
+      setBtnDisabled(true);
     }
-    else {
-      setBtnDisabled(true)
-    }
-  }, [noteContent, senderName])
+  }, [noteContent, senderName]);
 
   function getStepContent(step) {
-
     switch (step) {
       case 0:
-        return <SelectFrontliner elementSelected={cardSelected} stepperCallback={handleFrontliner} />
+        return locationData == null ? (
+          <></>
+        ) : (
+          <SelectFrontliner
+            elementSelected={cardSelected}
+            stepperCallback={handleFrontliner}
+            data={locationData["frontliners"]}
+          />
+        );
       case 1:
-        return <SelectLocation elementSelected={facility} locationType={cardSelected} stepperCallback={handleLocation} />
+        return locationData === null ? (
+          <></>
+        ) : (
+          <SelectLocation
+            elementSelected={facility}
+            locationType={cardSelected}
+            stepperCallback={handleLocation}
+            data={locationData["locations"]}
+          />
+        );
       case 2:
-        return <WriteNote stepperCallbackDescription={handleSender} stepperCallbackNote={handleNote} recipient={cardSelected} />
+        return (
+          <WriteNote
+            stepperCallbackDescription={handleSender}
+            stepperCallbackNote={handleNote}
+            recipient={cardSelected}
+          />
+        );
       default:
-        return 'Unknown step'
+        return "Unknown step";
     }
   }
 
@@ -120,13 +159,13 @@ export default function ProgressStepper(props) {
   }
   function handleNote(noteData) {
     if (noteData === "") {
-      setNoteContent(null)
+      setNoteContent(null);
     }
     setNoteContent(noteData);
   }
   function handleSender(senderData) {
     if (senderData === "") {
-      setSenderName(null)
+      setSenderName(null);
     }
     setSenderName(senderData);
   }
@@ -151,12 +190,11 @@ export default function ProgressStepper(props) {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed,
-        // find the first step that has been completed
-        steps.findIndex((step, i) => !(i in completed))
+          // find the first step that has been completed
+          steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1;
     setActiveStep(newActiveStep);
-    handleComplete()
-
+    handleComplete();
   };
 
   const handleBack = () => {
@@ -172,20 +210,19 @@ export default function ProgressStepper(props) {
   function getStepValue(step) {
     switch (step) {
       case 0:
-        return cardSelected
+        return cardSelected;
       case 1:
-        return facility
+        return facility;
       case 2:
-        return [noteContent, senderName]
+        return [noteContent, senderName];
       default:
         return null;
     }
   }
 
-
   const handleSubmit = () => {
-    handleComplete()
-    handleNext()
+    handleComplete();
+    handleNext();
     // console.log(cardSelected)
     // console.log(facility)
     // console.log(noteContent)
@@ -196,10 +233,10 @@ export default function ProgressStepper(props) {
       note: noteContent,
       sender: senderName,
       approved: false,
-      sent: false
-    }
+      sent: false,
+    };
     saveFormData(formData);
-  }
+  };
 
   function saveFormData(data) {
     var newFormRef = formRef.push();
@@ -210,7 +247,6 @@ export default function ProgressStepper(props) {
     const newCompleted = completed;
     newCompleted[activeStep] = true;
     setCompleted(newCompleted);
-
   };
 
   const handleReset = () => {
@@ -222,75 +258,87 @@ export default function ProgressStepper(props) {
     setCompleted({});
   };
 
-
   // useEffect(()=>console.log(cardSelected), [cardSelected])
   // useEffect(()=>console.log(facility), [facility])
 
   return (
-      <div className={classes.root}>
-        <Stepper nonLinear activeStep={activeStep}>
-          {steps.map((label, index) => (
-            <Step key={label}>
-              <StepButton onClick={handleStep(index)} completed={completed[index]}>
-                {label}
-              </StepButton>
-            </Step>
-          ))}
-        </Stepper>
-        <div className={classes.cards}>
-
-          {allStepsCompleted() ? (
-            <Grid container
+    <div className={classes.root}>
+      <Stepper nonLinear activeStep={activeStep}>
+        {steps.map((label, index) => (
+          <Step key={label}>
+            <StepButton
+              onClick={handleStep(index)}
+              completed={completed[index]}
+            >
+              {label}
+            </StepButton>
+          </Step>
+        ))}
+      </Stepper>
+      <div className={classes.cards}>
+        {allStepsCompleted() ? (
+          <Grid
+            container
             direction="column"
             alignItems="center"
             justify="center"
-            style={{ minHeight: '50vh' }}
-            >
-
-              <Grid item xs={12} md={3}>
-
-                <img alt='sending gif' className={classes.image} src='/images/sending.gif' />
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <Typography align="center" className={classes.caption} variant="h6" >
-                  Thanks for writing a note! Your note will be mailed to your chosen facility soon.
-              </Typography>
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <br/>
-                <br/>
-                <Button variant="contained" size="large" color="secondary" onClick={handleReset}>
-                  Support More Frontliners!
-                </Button>
-              </Grid>
+            style={{ minHeight: "50vh" }}
+          >
+            <Grid item xs={12} md={3}>
+              <img
+                alt="sending gif"
+                className={classes.image}
+                src="/images/sending.gif"
+              />
             </Grid>
-          ) : (
-              <>
-                <Prompt
-                  when={!allStepsCompleted() && cardSelected !== null}
-                   message='You have unsaved changes, are you sure you want to leave?'
-                />
-               <Grid
-                container
-                direction="column"
-                justify="center"
+            <Grid item xs={12} md={3}>
+              <Typography
+                align="center"
+                className={classes.caption}
+                variant="h6"
               >
-                <Grid id="step-content" item xs={12}>
-                  {/* <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography> */}
-                  {getStepContent(activeStep)}
-                 </Grid>
+                Thanks for writing a note! Your note will be mailed to your
+                chosen facility soon.
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <br />
+              <br />
+              <Button
+                variant="contained"
+                size="large"
+                color="secondary"
+                onClick={handleReset}
+              >
+                Support More Frontliners!
+              </Button>
+            </Grid>
+          </Grid>
+        ) : (
+          <>
+            <Prompt
+              when={!allStepsCompleted() && cardSelected !== null}
+              message="You have unsaved changes, are you sure you want to leave?"
+            />
+            <Grid container direction="column" justify="center">
+              <Grid id="step-content" item xs={12}>
+                {/* <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography> */}
+                {getStepContent(activeStep)}
+              </Grid>
 
-                 <Grid style={{marginTop:"5vh"}} item id="navigation" xs={12}>
-                  { isLastStep() ?
-                    <Button
-                      disabled={btnDisabled}
-                      className={classes.nextbutton}
-                      variant="contained" color="primary"
-                      onClick={handleSubmit}>
-                      Submit
-                 </Button>
-                    : null}
-                  { isLastStep()  ? null : 
+              <Grid style={{ marginTop: "5vh" }} item id="navigation" xs={12}>
+                {isLastStep() ? (
+                  <Button
+                    disabled={btnDisabled}
+                    className={classes.nextbutton}
+                    variant="contained"
+                    color="primary"
+                    onClick={handleSubmit}
+                  >
+                    Submit
+                  </Button>
+                ) : null}
+                {isLastStep() ? null : (
                   <Button
                     variant="contained"
                     color="primary"
@@ -299,18 +347,23 @@ export default function ProgressStepper(props) {
                     disabled={getStepValue(activeStep) === null ? true : false}
                   >
                     Next
-                </Button>}
+                  </Button>
+                )}
 
-                  <Button variant="contained" color="primary" className={classes.backbutton} disabled={activeStep === 0} onClick={handleBack}>
-                    Back
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.backbutton}
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                >
+                  Back
                 </Button>
-                  </Grid>
-                </Grid>
-              </>
-            )
-          }
-        </div >
-      </div >
-    
+              </Grid>
+            </Grid>
+          </>
+        )}
+      </div>
+    </div>
   );
 }

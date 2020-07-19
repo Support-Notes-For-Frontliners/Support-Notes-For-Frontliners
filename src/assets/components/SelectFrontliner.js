@@ -1,97 +1,113 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import "typeface-bad-script"
-import { useSpring, animated } from 'react-spring'
-import frontliner_list from '../data/frontliner_list.json'
-
-
-
-
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import "typeface-bad-script";
+import { useSpring, animated } from "react-spring";
 
 const useStyles = makeStyles({
-    card: {
-        maxWidth: 345,
-    },
-    cardSelected: {
-        maxWidth: 345,
-        backgroundColor: "#C8E8EA",
-        boxShadow: "none"
-    },
-    cardDisabled: {
-        maxWidth: 345,
-        bakcgroundColor: "#E4E4E4",
-        boxShadow: "none"
-    },
-    media: {
-        height: 140,
-    },
-    grid: {
-        flexGrow: 1,
-    },
+  card: {
+    maxWidth: 345,
+  },
+  cardSelected: {
+    maxWidth: 345,
+    backgroundColor: "#C8E8EA",
+    boxShadow: "none",
+  },
+  cardDisabled: {
+    maxWidth: 345,
+    bakcgroundColor: "#E4E4E4",
+    boxShadow: "none",
+  },
+  media: {
+    height: 140,
+  },
+  grid: {
+    flexGrow: 1,
+  },
 });
 
+export default function SelectFrontliner({
+  stepperCallback,
+  elementSelected,
+  data,
+}) {
+  const classes = useStyles();
+  const frontliner_list = data;
+  function handleInput(e) {
+    e.preventDefault();
+    stepperCallback(e.currentTarget.id);
+    // console.log(e.currentTarget.id);
+  }
 
-
-export default function SelectFrontliner({ stepperCallback, elementSelected }) {
-
-    const classes = useStyles();
-
-    function handleInput(e) {
-        e.preventDefault();
-        stepperCallback(e.currentTarget.id);
-        // console.log(e.currentTarget.id);
+  function completedIndicator(enabled) {
+    if (enabled) {
+      return "";
     }
+    return " (Completed)";
+  }
 
-    function completedIndicator(enabled){
-        if(enabled){
-            return ""
-        }
-        return " (Completed)" 
-    }
-
-    const springProps = useSpring({ opacity: 1, from: { opacity: 0 } })
-    return (
-        <animated.div style={springProps}>
-        <Grid container className={classes.grid} spacing={2}>
-            <Grid item xs={12}>
-                <Grid container justify="center" spacing={3}>
-                    <React.Fragment>
-                        {frontliner_list["frontliners"].map((frontliner, index) => (
-                            <Grid key={frontliner.name + "Card"} item>
-                                <Card id={frontliner.name} className={frontliner.name === elementSelected ? classes.cardSelected : frontliner.enabled ? classes.card : classes.cardDisabled} >
-                                <CardActionArea>
-                                <CardMedia
-                                        className={classes.media}
-                                        image={frontliner.img}
-                                        alt="increase priority"
-                                        title={frontliner.name}
-                                    />
-                                    <CardContent>
-                                        <Typography gutterBottom variant="h5" component="h2">
-                                            {frontliner.name + completedIndicator(frontliner.enabled)}
-                                        </Typography>
-                                        <Typography fontStyle="italic" variant="body2" color="textSecondary" component="p">
-                                            {frontliner.description}
-                                        </Typography>
-                                    </CardContent>
-                                </CardActionArea>
-                                <CardActions>
-                                    <Button id={frontliner.name} onClick={handleInput} size="small" color="primary">
-                                        Select
-                                    </Button>
-                                </CardActions>
-                                </Card>
-                            </Grid>
-                        ))}
-                        {/* <Grid key="Health Care Worker Card" item>
+  const springProps = useSpring({ opacity: 1, from: { opacity: 0 } });
+  return (
+    <animated.div style={springProps}>
+      <Grid container className={classes.grid} spacing={2}>
+        <Grid item xs={12}>
+          <Grid container justify="center" spacing={3}>
+            <React.Fragment>
+              {frontliner_list.map((frontliner, index) => (
+                <Grid key={frontliner.name + "Card"} item>
+                  <Card
+                    id={frontliner.name}
+                    className={
+                      frontliner.name === elementSelected
+                        ? classes.cardSelected
+                        : frontliner.enabled
+                        ? classes.card
+                        : classes.cardDisabled
+                    }
+                  >
+                    <CardActionArea>
+                      <CardMedia
+                        className={classes.media}
+                        image={frontliner.img}
+                        alt="increase priority"
+                        title={frontliner.name}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {frontliner.name +
+                            completedIndicator(frontliner.enabled)}
+                        </Typography>
+                        <Typography
+                          fontStyle="italic"
+                          variant="body2"
+                          color="textSecondary"
+                          component="p"
+                        >
+                          {frontliner.description}
+                        </Typography>
+                      </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                      <Button
+                        id={frontliner.name}
+                        onClick={handleInput}
+                        size="small"
+                        color="primary"
+                      >
+                        Select
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
+              {/* <Grid key="Health Care Worker Card" item>
                             <Card className={classes.card} >
                                 <CardActionArea>
                                     <CardMedia
@@ -119,8 +135,7 @@ export default function SelectFrontliner({ stepperCallback, elementSelected }) {
                             </Card>
                         </Grid> */}
 
-
-                        {/* <Grid key="Grocery Store Worker Card" item>
+              {/* <Grid key="Grocery Store Worker Card" item>
                             <Card className={classes.card}>
                                 <CardActionArea>
                                     <CardMedia
@@ -147,7 +162,7 @@ export default function SelectFrontliner({ stepperCallback, elementSelected }) {
                             </Card>
                         </Grid> */}
 
-                        {/* <Grid key="Nursing Home Workers" item>
+              {/* <Grid key="Nursing Home Workers" item>
                             <Card className={classes.card}>
                                 <CardActionArea>
                                     <CardMedia
@@ -173,11 +188,10 @@ export default function SelectFrontliner({ stepperCallback, elementSelected }) {
                                 </CardActions>
                             </Card>
                         </Grid> */}
-
-                    </React.Fragment>
-                </Grid>
-            </Grid>
+            </React.Fragment>
+          </Grid>
         </Grid>
-        </animated.div>
-    );
+      </Grid>
+    </animated.div>
+  );
 }
