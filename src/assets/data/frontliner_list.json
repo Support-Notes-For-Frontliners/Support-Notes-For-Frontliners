@@ -1,0 +1,16 @@
+{
+  "frontliners": [
+    {
+      "name": "Health Care Workers",
+      "description": "Health care workers are at the front line of the COVID-19 outbreak response and risk being infected daily to help the most vulnerable. As our society's first defense against COVID-19, health workers shoulder immense psychological distress and fatigue on a daily basis. Writing a note to health workers lets them know that they are appreciated for their service and are being supported as heroes of their community.",
+      "img": "/images/healthworkers.jpeg",
+      "enabled": true
+    },
+    {
+      "name": "Homeless Shelter Workers",
+      "description": "The homeless population of our nation has increased drastically due to job cuts and other major layoffs. To support the new wave of homelessness, homeless shelter workers have been working around the clock to make sure those who are struggling have access to food, shelter, and water. Write a note to support the homeless shelter workers who are bearing the weight of supporting the new wave of homeless caused by the pandemic.",
+      "img": "/images/homeless_shelter_workers.jpg",
+      "enabled": true
+    }
+  ]
+}
