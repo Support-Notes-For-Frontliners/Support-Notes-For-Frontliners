@@ -61,16 +61,14 @@ export default function SelectFrontliner({
           <Grid container justify="center" spacing={3}>
             <React.Fragment>
               {frontliner_list.map((frontliner, index) => (
+                frontliner.enabled ? 
                 <Grid key={frontliner.name + "Card"} item>
                   <Card
                     id={frontliner.name}
                     className={
                       frontliner.name === elementSelected
                         ? classes.cardSelected
-                        : frontliner.enabled
-                        ? classes.card
-                        : classes.cardDisabled
-                    }
+                        : classes.card}
                   >
                     <CardActionArea>
                       <CardMedia
@@ -106,6 +104,7 @@ export default function SelectFrontliner({
                     </CardActions>
                   </Card>
                 </Grid>
+                : null
               ))}
               {/* <Grid key="Health Care Worker Card" item>
                             <Card className={classes.card} >
