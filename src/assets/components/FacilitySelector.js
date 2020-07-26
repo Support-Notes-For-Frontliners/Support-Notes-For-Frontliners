@@ -65,6 +65,7 @@ export default function FacilitySelector({
         <Grid container justify="center" spacing="3">
           <React.Fragment>
             {location_list[jsonKey].map((selectedHospital, index) => (
+              selectedHospital.enabled ? 
               <Grid key={selectedHospital.name} item>
                 <Card
                   id={selectedHospital.name}
@@ -100,7 +101,6 @@ export default function FacilitySelector({
                   </CardActionArea>
                   <CardActions>
                     <Button
-                      disabled={!selectedHospital.enabled}
                       onClick={handleInput}
                       id={selectedHospital.name}
                       size="small"
@@ -114,6 +114,7 @@ export default function FacilitySelector({
                   </CardActions>
                 </Card>
               </Grid>
+              : null
             ))}
           </React.Fragment>
         </Grid>
