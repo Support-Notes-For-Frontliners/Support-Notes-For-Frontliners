@@ -23,7 +23,13 @@ const useStyles = makeStyles((theme) => ({
       color: "white",
   },
   links: {
-    marginLeft:"25px"
+    marginLeft:"25px",
+    fontWeight: "300",
+  },
+  importantLink:{
+    background: "#95D4DA",
+    borderRadius: "5px",
+    padding: "3px 10px",
   },
 }
 ));
@@ -69,7 +75,7 @@ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             href="/">
               <img alt="logo512" src="/logo512-white.png" width="32" height="32"/>
            </IconButton>
-            <Typography variant="h6" className={classes.title} noWrap>
+            <Typography variant="h5" className={classes.title} noWrap>
                 <Link underline="none" component={RouterLink} to="/" style = {{color: "white" , marginLeft: "5px"}}> 
                 Support Notes For Frontliners
                 </Link>
@@ -78,7 +84,7 @@ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             {isMobile ? <Drawer/>
             : 
             <>
-            <Typography className = {classes.links}  variant="h6">
+            <Typography className = {`${classes.links} ${classes.importantLink}`}  variant="h6">
                 <Link underline="none" component={RouterLink} to="/note" style = {{color: "white" }}> 
                 Write a Note
                 </Link>
