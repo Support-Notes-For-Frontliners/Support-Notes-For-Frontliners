@@ -4,7 +4,7 @@ import Hero from './assets/components/Hero'
 import HomeExplainer from './assets/components/HomeExplainer'
 import Footer from './assets/components/Footer'
 import { useSpring, animated } from 'react-spring'
-
+import NoteSlider from './assets/components/Homepage/Slider'
 
 
 function Home() {
@@ -29,6 +29,8 @@ function Home() {
     <Element name="scroll-to-element" className="element">          
         <HomeExplainer />
     </Element>
+    
+    <NoteSlider />
     
     <Footer/>
     </div>
