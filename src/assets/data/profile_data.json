@@ -28,5 +28,11 @@
     "links": [],
     "image": "maggie.jpg",
     "role": "Marketing"
+  },
+  {
+    "name": "Moishe K.",
+    "links": [],
+    "image": "moishe.jpg",
+    "role": "Web Development"
   }
 ]
