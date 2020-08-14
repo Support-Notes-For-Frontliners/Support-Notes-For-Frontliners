@@ -79,7 +79,7 @@ export default function HomeStatWidget({ firebase }) {
         </Typography>
         <Typography className={classes.h2}> Notes Written</Typography>
         <Typography variant="body1" className={classes.body1}>
-          We'are a community driven organization that depends on people like you to contribute to our cause by writing notes. Help us by writing a note and sharing our cause to others!
+          We are a community driven organization that depends on people like you to contribute to our cause by writing notes. Help us by writing a note and sharing our cause to others!
         </Typography>
       </Grid>
 
