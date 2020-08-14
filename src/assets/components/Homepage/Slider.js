@@ -132,7 +132,7 @@ function Slider(props){
                     </StyledTypography>
                 </div>
                 <Typography className = {classes.links}  variant="p" style= {{textDecoration: "underline", float:"right", marginTop: "50px", fontWeight: "400" }}>
-                    <Link underline="none" component={RouterLink} to="/gallery"  style={{color: "black"}}> 
+                    <Link underline="none" component={RouterLink} to="/note-gallery"  style={{color: "black"}}> 
                     View All
                     </Link>
                 </Typography>

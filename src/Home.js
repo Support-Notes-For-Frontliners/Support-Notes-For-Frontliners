@@ -26,9 +26,9 @@ function Home() {
       <div>
         <Hero parentCallback={scrollTo} />
 
-        <Element name="scroll-to-element" className="element">
+        {/* <Element name="scroll-to-element" className="element">
           <HomeExplainer />
-        </Element>
+        </Element> */}
 
         <NoteSlider />
         <Locations
