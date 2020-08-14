@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
+    "fast-average-color": "^6.0.2",
     "firebase": "^7.14.0",
     "firebase-paginator": "^1.1.2",
     "react": "^16.13.1",
@@ -25,6 +26,7 @@
     "react-spring": "^8.0.27",
     "rebass": "^3.0.0-12",
     "styled-components": "^5.1.0",
+    "tinycolor2": "^1.4.1",
     "typeface-bad-script": "0.0.72"
   },
   "scripts": {
