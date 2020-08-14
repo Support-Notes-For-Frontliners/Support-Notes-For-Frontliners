@@ -16,16 +16,25 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '3rem',
     fontWeight: '600',
     display: "inline",
+    [theme.breakpoints.down('md')]: {
+      fontSize: '2rem'
+    },
   },
   h2:{
     fontSize: '1.5rem',
     fontWeight: '600',
     display: "inline",
+    [theme.breakpoints.down('md')]: {
+      fontSize: '1.25rem'
+    },
   },
   body1: {
     margin: theme.spacing(2,0,2,0),
     maxWidth: "350px",
-    color: "#606060"
+    color: "#606060",
+    [theme.breakpoints.down('md')]: {
+      maxWidth: '80vw'
+    },
   }
 }));
 

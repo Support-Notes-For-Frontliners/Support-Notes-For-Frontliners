@@ -6,10 +6,12 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import StyledTypography from './StyledTypography'
 import ProductHeroLayout from './ProductHeroLayout';
+import Hidden from '@material-ui/core/Hidden';
 import HomeStatWidget from './HomeStatWidget.js';
 import FirebaseContext from './FireBase/FireBaseContext';
 import Container from '@material-ui/core/Container';
 import lottie from 'lottie-web'
+import { Link as RouterLink } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     maxWidth: '600px',
     [theme.breakpoints.down('md')]: {
-      fontSize: '3rem'
+      fontSize: '2.2rem',
+      margin: theme.spacing(6,2,2,2),
     },
   },
   h2: {
@@ -31,29 +34,49 @@ const useStyles = makeStyles((theme) => ({
     color: "#606060",
     fontWeight: 'light',
     maxWidth: '450px',
-    // [theme.breakpoints.up('md')]: {
-    //   margin: theme.spacing(4, 4, 4, 12),
-    // },
+    [theme.breakpoints.down('md')]: {
+      fontSize: '1.1rem',
+      margin: theme.spacing(2,2,0,2),
+    },
   },
 
   button:{
     margin: theme.spacing(2,2,2,4),
-    // [theme.breakpoints.up('md')]: {
-    //   margin: theme.spacing(0, 0, 12, 12),
-    // },
+    [theme.breakpoints.down('md')]: {
+      margin: theme.spacing(2),
+    },
   },
   animation:{
     margin: theme.spacing(2,4,4,4),
+    [theme.breakpoints.down('md')]: {
+      margin: "0px",
+    },
   }
 }));
 
+
+
 function ProductHero(props) {
+
+  function noteButton(){
+    return(
+      <Button
+      color="secondary"
+      variant="contained"
+      size="large"
+      className={classes.button}
+      component={RouterLink} to="/note"
+      >
+        Write a Note
+      </Button>
+    )
+  }
 
   const container = React.useRef(null);
 
-  function handleClick() {
-    props.parentCallback()
-  }
+  // function handleClick() {
+  //   props.parentCallback()
+  // }
   const classes = useStyles();
 
   React.useEffect(() => {
@@ -69,15 +92,11 @@ function ProductHero(props) {
   return (
     <div className={classes.container}>
       <Grid container 
-        direction="row-reverse"
+        direction="row"
         justify="center"
         alignItems="center"
         >
-           <Grid item xs={12} md={4} lg={3}>
-          {/* Animation Goes Here */}
-          <div className={classes.animation} ref={container}/>
-        </Grid>
-        <Grid item xs={12} md={7} lg={5}> 
+         <Grid item xs={12} md={7} lg={5}> 
           <div>
             <Typography className={classes.h1} align='left' variant='h1'>
               Show frontline workers that we care
@@ -85,18 +104,19 @@ function ProductHero(props) {
             <Typography className={classes.h2} align='left' variant='h1'>
               Join the movement supporting the mental health of our frontline workers, one note at a time.
             </Typography>
-            <Button
-            color="secondary"
-            variant="contained"
-            size="large"
-            className={classes.button}
-            component="a"
-            onClick={handleClick}
-          >
-            Write a Note
-            </Button>
+            <Hidden only={['sm', 'xs']}>
+              {noteButton()}
+            </Hidden>
             </div>
         </Grid>
+
+        <Grid item xs={10} md={4} lg={3}>
+          {/* Animation Goes Here */}
+          <div className={classes.animation} ref={container}/>
+        </Grid>
+        <Hidden only={['md', 'lg', 'xl']}>
+              {noteButton()}
+        </Hidden>
         
      
         <Grid item xs={12} md={11} lg={8}>
