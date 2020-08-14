@@ -90,7 +90,7 @@ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
                 </Link>
             </Typography>
             <Typography className = {classes.links}  variant="h6">
-                <Link underline="none" component={RouterLink} to="/gallery"  style= {{color: "white" }}> 
+                <Link underline="none" component={RouterLink} to="/note-gallery"  style= {{color: "white" }}> 
                 Gallery
                 </Link>
             </Typography>
