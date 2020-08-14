@@ -4,11 +4,29 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  container:{
+    margin: theme.spacing(4,2,4,2),
+    textAlign: "left"
+  },  
   widget: {
-    textAlign: "center",
     padding: theme.spacing(2),
-    color: "white",
+    color: "black",
   },
+  h1:{
+    fontSize: '3rem',
+    fontWeight: '600',
+    display: "inline",
+  },
+  h2:{
+    fontSize: '1.5rem',
+    fontWeight: '600',
+    display: "inline",
+  },
+  body1: {
+    margin: theme.spacing(2,0,2,0),
+    maxWidth: "350px",
+    color: "#606060"
+  }
 }));
 
 export default function HomeStatWidget({ firebase }) {
@@ -43,24 +61,36 @@ export default function HomeStatWidget({ firebase }) {
       justify="center"
       alignItems="flex-start"
       style={opacity()}
+      className={classes.container}
     >
-      <Grid item xs={xsVal} className={classes.widget}>
-        <Typography variant="h3">
+      <Grid item xs={12} md={4} className={classes.widget}>
+        <Typography variant = "h3" className={classes.h1}>
           {orgStats ? orgStats["facility_count"] : 7}
         </Typography>
-        <Typography>Total Facilities</Typography>
+        <Typography className={classes.h2}> Total Facilities</Typography>
+        <Typography variant="body1" className={classes.body1}>
+        We proudly deliver your notes to 4 homeless shelters, 3 nursing homes, and 7 hospitals. We are constantly looking for more centers to support.
+        </Typography>
       </Grid>
-      <Grid item xs={xsVal} className={classes.widget}>
-        <Typography variant="h3">
+
+      <Grid item xs={12} md={4} className={classes.widget}>
+        <Typography variant = "h3" className={classes.h1}>
           {orgStats ? orgStats["notes_count"] : 374}
         </Typography>
-        <Typography>Notes Written</Typography>
+        <Typography className={classes.h2}> Notes Written</Typography>
+        <Typography variant="body1" className={classes.body1}>
+          We'are a community driven organization that depends on people like you to contribute to our cause by writing notes. Help us by writing a note and sharing our cause to others!
+        </Typography>
       </Grid>
-      <Grid item xs={xsVal} className={classes.widget}>
-        <Typography variant="h3">
+
+      <Grid item xs={12} md={4} className={classes.widget}>
+        <Typography variant = "h3" className={classes.h1}>
           {orgStats ? orgStats["sent_count"] : 67}
         </Typography>
-        <Typography >Notes Delivered</Typography>
+        <Typography className={classes.h2} > Notes Delivered</Typography>
+        <Typography variant="body1" className={classes.body1}>
+          We've delivered this much and counting! Each and every note delivered is a message of encouragement, a token of appreciation, and a powerful tool to raise awareness about worker mental health. 
+        </Typography>
       </Grid>
     </Grid>
   );

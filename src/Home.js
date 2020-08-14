@@ -7,6 +7,8 @@ import { useSpring, animated } from 'react-spring'
 import NoteSlider from './assets/components/Homepage/Slider'
 
 
+
+
 function Home() {
   const springProps = useSpring({ opacity: 1, from: { opacity: 0 } })
   var Scroll = require('react-scroll');
@@ -23,17 +25,17 @@ function Home() {
   
   return (
     <animated.div style={springProps}>
-    <div>
+    
     <Hero parentCallback={scrollTo}/>
 
-    <Element name="scroll-to-element" className="element">          
+    {/* <Element name="scroll-to-element" className="element">          
         <HomeExplainer />
-    </Element>
+    </Element> */}
     
     <NoteSlider />
     
     <Footer/>
-    </div>
+
     </animated.div>
   );
   
