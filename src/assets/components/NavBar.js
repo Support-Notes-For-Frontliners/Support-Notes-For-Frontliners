@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import Hidden from '@material-ui/core/Hidden'
 import Slide from '@material-ui/core/Slide';
 import { Link, IconButton } from '@material-ui/core';
 import { Link as RouterLink } from "react-router-dom";
@@ -75,38 +76,41 @@ var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             href="/">
               <img alt="logo512" src="/logo512-white.png" width="32" height="32"/>
            </IconButton>
+           <Hidden only={['xs', 'sm']}>
             <Typography variant="h5" className={classes.title} noWrap>
                 <Link underline="none" component={RouterLink} to="/" style = {{color: "white" , marginLeft: "5px"}}> 
-                Support Notes For Frontliners
+                Notes For Frontliners
                 </Link>
             </Typography>
-            <>
-            {isMobile ? <Drawer/>
-            : 
-            <>
-            <Typography className = {`${classes.links} ${classes.importantLink}`}  variant="h6">
-                <Link underline="none" component={RouterLink} to="/note" style = {{color: "white" }}> 
-                Write a Note
-                </Link>
-            </Typography>
-            <Typography className = {classes.links}  variant="h6">
-                <Link underline="none" component={RouterLink} to="/note-gallery"  style= {{color: "white" }}> 
-                Gallery
-                </Link>
-            </Typography>
-            <Typography className = {classes.links}  variant="h6">
-                <Link underline="none" href="https://blog.notesforfrontliners.org" target="_blank" style= {{color: "white" }}> 
-                Blog
-                </Link>
-            </Typography>
-            <Typography className = {classes.links} variant="h6">
-                <Link underline="none" component={RouterLink} to="/about" style = {{color: "white" }}> 
-                About
-                </Link>
-            </Typography>
-            </>
-            }
-            </>
+            </Hidden>
+
+            <Hidden only={['sm', 'md', 'lg', 'xl']}>
+             <Drawer/>
+            </Hidden>
+            <Hidden only={['xs']}>
+              <Typography className = {`${classes.links} ${classes.importantLink}`}  variant="h6">
+                  <Link underline="none" component={RouterLink} to="/note" style = {{color: "white" }}> 
+                  Write a Note
+                  </Link>
+              </Typography>
+              <Typography className = {classes.links}  variant="h6">
+                  <Link underline="none" component={RouterLink} to="/note-gallery"  style= {{color: "white" }}> 
+                  Gallery
+                  </Link>
+              </Typography>
+              <Typography className = {classes.links}  variant="h6">
+                  <Link underline="none" href="https://blog.notesforfrontliners.org" target="_blank" style= {{color: "white" }}> 
+                  Blog
+                  </Link>
+              </Typography>
+              <Typography className = {classes.links} variant="h6">
+                  <Link underline="none" component={RouterLink} to="/about" style = {{color: "white" }}> 
+                  About
+                  </Link>
+              </Typography>
+
+            </Hidden>
+ 
           </Toolbar>
         </AppBar>
       </HideOnScroll>

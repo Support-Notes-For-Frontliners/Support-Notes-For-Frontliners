@@ -12,7 +12,7 @@ import FirebaseContext from './FireBase/FireBaseContext';
 import Container from '@material-ui/core/Container';
 import lottie from 'lottie-web'
 import { Link as RouterLink } from 'react-router-dom';
-
+import HomeStatWidgetMini from './HomeStatWidgetMini';
 
 const useStyles = makeStyles((theme) => ({
   container:{
@@ -118,12 +118,21 @@ function ProductHero(props) {
               {noteButton()}
         </Hidden>
         
-     
+        <Hidden only={['sm', 'xs']}>
+          <Grid item xs={12} md={11} lg={8}>
+            <FirebaseContext.Consumer >
+              {firebase => (<HomeStatWidget firebase={firebase}/>)}
+            </FirebaseContext.Consumer>
+          </Grid>
+        </Hidden>
+
+        <Hidden only={['md', 'lg', 'xl']}>
         <Grid item xs={12} md={11} lg={8}>
-          <FirebaseContext.Consumer >
-            {firebase => (<HomeStatWidget firebase={firebase}/>)}
-          </FirebaseContext.Consumer>
-        </Grid>
+            <FirebaseContext.Consumer >
+              {firebase => (<HomeStatWidgetMini firebase={firebase}/>)}
+            </FirebaseContext.Consumer>
+          </Grid>
+        </Hidden>
 
       </Grid>
     </div>

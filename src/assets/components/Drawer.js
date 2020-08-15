@@ -75,7 +75,7 @@ function ResponsiveDrawer(props) {
   };
 
   const IconList = [<HomeIcon/>, <MailIcon/>, <ImageIcon/>, <InfoIcon/>]
-  const RefList = ["/", "/note", "/gallery", "/about"]
+  const RefList = ["/", "/note", "/note-gallery", "/about"]
 
   const drawer = (
     <div>
@@ -112,7 +112,7 @@ function ResponsiveDrawer(props) {
           
           <Typography variant="h6" className={classes.title} noWrap>
                 <Link underline="none" component={RouterLink} to="/" style = {{color: "white" }}> 
-                Support Notes For Frontliners
+                 Notes For Frontliners
                 </Link>
             </Typography>
         </Toolbar>
