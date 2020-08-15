@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Grid, Container, Typography } from '@material-ui/core'
+import { Grid, Container, Typography, createMuiTheme, ThemeProvider } from '@material-ui/core'
 import { useTheme, withStyles } from '@material-ui/core/styles'
 import Note from './HomepageNote'
 import Arrow from './SliderButton'
 import StyledTypography from '../StyledTypography';
-import { Link, IconButton } from '@material-ui/core';
+import { Link } from '@material-ui/core';
 import { Link as RouterLink } from "react-router-dom";
+import NoteData from "../../data/homepagenote_data.json";
 
 // style for cards
 const cardStyle = {
@@ -47,14 +48,24 @@ const styles = (theme) => ({
     },
 })
 
+const themeTypo = createMuiTheme({
+    typography: {
+        fontFamily: [
+            'Bad Script',
+        ].join(','),
+    }
+});
+
 function Slider(props){
     // style for moi
     const classes=(props.classes)
     const theme = useTheme()
 
-    const totalCardPxWidth = theme.spacing(cardStyle.width+cardStyle.wordPad*2+cardStyle.backPad) + 40
-
-    const data =["a","a","a","a","a","a","a","a","a"]
+    const widthDivisor = 10;
+    
+    const arrSum = arr => arr.reduce((a,b) => a + b, 0)
+    const averageCardWidth = arrSum(NoteData.map(item => item.body.length/widthDivisor))/NoteData.length
+    const totalCardPxWidth = theme.spacing(averageCardWidth+cardStyle.wordPad*2+cardStyle.backPad) + 40
 
     const contentWidth = theme.breakpoints.values.lg
 
@@ -72,7 +83,7 @@ function Slider(props){
     }, [])
     
     const minOffset = Math.max((windowWidth - contentWidth) /2, 0) // max scroll to left
-    const maxOffset = -1 * data.length * totalCardPxWidth + windowWidth // this is max scroll to right
+    const maxOffset = -1 * NoteData.length * totalCardPxWidth + windowWidth // this is max scroll to right
     // console.log("min " + minOffset)
     // console.log("max " + maxOffset)
 
@@ -138,18 +149,21 @@ function Slider(props){
                 </Typography>
             </Container>
             <Grid container spacing={0} className={classes.slider} ref={sliderRef} style={{paddingBottom:(!isDisplayButtons?"40px":"0px")}}>
-                <Grid item>
-                    <div ref={sliderPosRef} className={classes.sliderStart} style={{marginLeft:minOffset}}></div>
-                </Grid>
-                {data.map((datapoint, index) =>{
-                    return(
-                        <Grid item key={"homepagenote"+index}>
-                            <Note theme={theme} style={{...cardStyle,backColor:cardColors[index%cardColors.length]}} data={datapoint} index={index} />
-                        </Grid>
-                        )
-                    })
-                }
+                <ThemeProvider theme={themeTypo}>
+                    <Grid item>
+                        <div ref={sliderPosRef} className={classes.sliderStart} style={{marginLeft:minOffset}}></div>
+                    </Grid>
+                    {NoteData.map((datapoint, index) =>{
+                        return(
+                            <Grid item key={"homepagenote"+index}>
+                                <Note header={datapoint.header} body={datapoint.body} sender={datapoint.sender} theme={theme} style={{...cardStyle,width:(datapoint.body.length/widthDivisor),backColor:cardColors[index%cardColors.length]}} data={datapoint} index={index} />
+                            </Grid>
+                            )
+                        })
+                    }
+                </ThemeProvider>
             </Grid>
+    {/* whether or not to display slider arrow buttons */}
             {isDisplayButtons &&
                 <div>
                     <div className={`${classes.arrow} ${classes.arrowLeft}`} style={arrowOffsetLeft}  >

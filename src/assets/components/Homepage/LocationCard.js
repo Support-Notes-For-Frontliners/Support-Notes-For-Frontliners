@@ -1,11 +1,10 @@
 import React from "react";
-import { Paper, makeStyles, Typography } from "@material-ui/core";
+import {  makeStyles, Typography } from "@material-ui/core";
 import FastAverageColor from "fast-average-color";
 import CardMedia from "@material-ui/core/CardMedia";
 import tinycolor from "tinycolor2";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 
 const fac = new FastAverageColor();

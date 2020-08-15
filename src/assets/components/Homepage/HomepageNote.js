@@ -38,13 +38,13 @@ function Note(props){
             <Paper className={classes.wrapPaper}>
             </Paper>
             <Paper className={classes.notePaper} style={{}}>
-                <Typography>
-                    Dear Health Care Worker,    
-                    Thank you for helping save lives! I am so beyond thankful and grateful for all that you have done! You inspire me in so many ways! Thank you for the sacrifices made as well! Stay strong and stay safe!
-                    -From a student at Newport High School
-                    <br></br>
-                    {props.index}
-                </Typography>
+                <Typography>{props.header}</Typography>
+                <br />
+                <Typography>{props.body}</Typography>
+                <br />
+                <Typography>{props.sender}</Typography>
+                {/* <br></br>
+                <Typography>{props.index}</Typography> */}
             </Paper>
         </div>
     )

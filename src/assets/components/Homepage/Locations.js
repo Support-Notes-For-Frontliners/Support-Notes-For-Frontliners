@@ -3,10 +3,8 @@ import ReactDOM from "react-dom";
 import { Grid, Container, Typography } from "@material-ui/core";
 import { useTheme, withStyles } from "@material-ui/core/styles";
 import LocationNote from "./LocationCard";
-import Arrow from "./SliderButton";
 import StyledTypography from "../StyledTypography";
-import { Link, IconButton } from "@material-ui/core";
-import { Link as RouterLink } from "react-router-dom";
+
 
 // style for cards
 const cardStyle = {
