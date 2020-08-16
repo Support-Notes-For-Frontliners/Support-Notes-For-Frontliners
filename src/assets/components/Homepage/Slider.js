@@ -139,10 +139,13 @@ function Slider(props){
             <Container>
                 <div style={{display:"inline-block", marginTop:"30px"}}>
                     <StyledTypography color="inherit" variant={"h4"} marked="center" >
+                        <div style={{textAlign:"center"}}>
                         Notes From Around the World
+                        </div>
+                        
                     </StyledTypography>
                 </div>
-                <Typography className = {classes.links}  variant="p" style= {{textDecoration: "underline", float:"right", marginTop: "50px", fontWeight: "400" }}>
+                <Typography className = {classes.links}  variant="p" style= {{textDecoration: "underline", float:"right", marginTop: (window.innerWidth>537 ? "70px": "10px"), fontWeight: "400" }}>
                     <Link underline="none" component={RouterLink} to="/note-gallery"  style={{color: "black"}}> 
                     View All
                     </Link>

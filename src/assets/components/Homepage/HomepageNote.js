@@ -34,7 +34,7 @@ function Note(props){
     const classes = useStyles(props)
 
     return (
-        <div className={classes.note}>
+        <div className={classes.note} style={{marginTop:(window.innerWidth>537 ? "60px": "20px")}}>
             <Paper className={classes.wrapPaper}>
             </Paper>
             <Paper className={classes.notePaper} style={{}}>
