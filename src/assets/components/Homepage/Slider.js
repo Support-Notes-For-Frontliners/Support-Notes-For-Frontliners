@@ -25,7 +25,7 @@ const styles = (theme) => ({
         scrollBehavior:"smooth",
     },
     root:{
-        backgroundColor:"#E1F3F4",
+        backgroundColor: theme.palette.primary.light,
     },
     slider:{
         flexWrap:"nowrap",
