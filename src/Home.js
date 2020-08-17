@@ -31,29 +31,7 @@ function Home() {
         </Element> */}
 
         <NoteSlider />
-        <Locations
-          LocationData={{
-            "Currently Delivering To:": [
-              {
-                name: "Evergreen Health Medical",
-                region: "Kirkland",
-                img: "/images/evergreen_health.png",
-              },
-              {
-                name: "Evergreen Health Medical",
-                region: "Kirkland",
-                img: "/images/sunrise-of-bellevue.jpg",
-              },
-            ],
-            "Deliveries Completed To:": [
-              {
-                name: "Evergreen Health Medical",
-                region: "Kirkland",
-                img: "/images/evergreen_health.png",
-              },
-            ],
-          }}
-        />
+        <Locations />
 
         <Footer />
       </div>

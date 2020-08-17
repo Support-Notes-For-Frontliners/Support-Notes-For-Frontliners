@@ -4,7 +4,7 @@ import { Grid, Container, Typography } from "@material-ui/core";
 import { useTheme, withStyles } from "@material-ui/core/styles";
 import LocationNote from "./LocationCard";
 import StyledTypography from "../StyledTypography";
-
+import FirebaseContext from "../FireBase/FireBaseContext";
 
 // style for cards
 const cardStyle = {
@@ -12,14 +12,6 @@ const cardStyle = {
   // height: 5,
   wordPad: 1,
 };
-const cardColors = [
-  "#fd9ba3",
-  "#fedac3",
-  "#b7ead7",
-  "#feb7b3",
-  "#c8cfe9",
-  "#e2f0cd",
-];
 
 var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
@@ -32,7 +24,6 @@ const styles = (theme) => ({
   },
   slider: {
     flexWrap: "nowrap",
-    // overflow:"hidden",
     overflow: "scroll",
     scrollBehavior: "smooth",
 
@@ -54,10 +45,44 @@ const styles = (theme) => ({
 });
 
 function LocationCards(props) {
+  return (
+    <FirebaseContext.Consumer>
+      {(firebase) => <Cards firebase={firebase} {...props} />}
+    </FirebaseContext.Consumer>
+  );
+}
+
+function Cards(props) {
   // style for moi
   const classes = props.classes;
-  const locationData = props.LocationData;
+  const [locationData, setData] = React.useState(null);
+  // const locationData = props.LocationData;?
   const theme = useTheme();
+
+  const locationRef = props.firebase.db.ref("locationData/locations");
+  React.useEffect(() => {
+    locationRef.on("value", gotStatData, errData);
+  }, []);
+  function gotStatData(data) {
+    data = data.val();
+    const total = {
+      "Currently Delivering To:": [],
+      "Deliveries Completed To:": [],
+    };
+    Object.keys(data).forEach((element) => {
+      console.log(data, element);
+      data[element].forEach((loc) => {
+        total[
+          loc.enabled ? "Currently Delivering To:" : "Deliveries Completed To:"
+        ].push(loc);
+      });
+    });
+    setData(total);
+  }
+  function errData(err) {
+    console.log("Error!");
+    console.log(err);
+  }
 
   const totalCardPxWidth =
     theme.spacing(cardStyle.width + cardStyle.wordPad * 2 + cardStyle.backPad) +
@@ -81,8 +106,6 @@ function LocationCards(props) {
 
   const minOffset = Math.max((windowWidth - contentWidth) / 2, 0); // max scroll to left
   const maxOffset = -1 * data.length * totalCardPxWidth + windowWidth; // this is max scroll to right
-  // console.log("min " + minOffset)
-  // console.log("max " + maxOffset)
 
   // control cards movement, start with min
   const [offset, setOffset] = React.useState(-minOffset);
@@ -94,56 +117,18 @@ function LocationCards(props) {
     ),
     totalCardPxWidth
   );
-  // console.log("dist" + slideDist)
-  // console.log("offset" + offset)
 
   const sliderRef = React.useRef();
   const sliderPosRef = React.useRef();
 
   const [isGridHovered, setIsGridHovered] = React.useState(false);
-  const [isRightButtonHovered, setIsRightButtonHovered] = React.useState(false);
-  const [isLeftButtonHovered, setIsLeftButtonHovered] = React.useState(false);
-
-  function handleClick(direction) {
-    const currentPos = -ReactDOM.findDOMNode(
-      sliderPosRef.current
-    ).getBoundingClientRect().x;
-    // console.log("current "+currentPos)
-
-    var scrollTo = currentPos;
-    if (direction === "right") {
-      scrollTo =
-        currentPos + minOffset + slideDist - (currentPos % totalCardPxWidth);
-    } else if (direction === "left") {
-      scrollTo =
-        currentPos + minOffset - slideDist - (currentPos % totalCardPxWidth);
+  function opacity() {
+    if (locationData === null) {
+      return { opacity: "0" };
+    } else {
+      return { opacity: "1", transition: "all 1s ease" };
     }
-
-    scrollTo = Math.min(Math.max(scrollTo, -minOffset), -maxOffset + minOffset);
-    ReactDOM.findDOMNode(sliderRef.current).scrollTo(scrollTo, 0);
-    setOffset(scrollTo);
-    // console.log("scroll to "+(scrollTo))
   }
-  function handleClickRight() {
-    handleClick("right");
-  }
-  function handleClickLeft() {
-    handleClick("left");
-  }
-
-  const disabledLeft = offset === -minOffset;
-  const disabledRight = offset === -maxOffset + minOffset;
-  const arrowOffsetLeft = {
-    left: isMobile ? "20px" : 0.25 * windowWidth + "px",
-  };
-  const arrowOffsetRight = {
-    left: isMobile
-      ? windowWidth - 120 + "px"
-      : 0.75 * (windowWidth - 120) + "px",
-  };
-  const isDisplayButtons =
-    isMobile || isGridHovered || isRightButtonHovered || isLeftButtonHovered;
-
   return (
     <div
       className={classes.root}
@@ -153,56 +138,71 @@ function LocationCards(props) {
           setIsGridHovered(false);
         }, 50)
       }
+      style={opacity()}
     >
-      <Container>
-        <div style={{ display: "inline-block", marginTop: "30px" }}>
-          <StyledTypography color="inherit" variant={"h4"} marked="center">
-            View Our Locations
-          </StyledTypography>
-        </div>
-
-        <Grid container direction="column" spacing={0}>
-          {Object.keys(locationData).map((val) => (
-            <div style={{ marginBottom: 10 }}>
-              <Grid item style={{ marginLeft: 30, marginTop: 20 }}>
-                <div style={{ display: "inline-block" }}>
-                  <Typography color="inherit" variant={"h5"}>
-                    {val}
-                  </Typography>
+      {!locationData ? (
+        <></>
+      ) : (
+        <Container>
+          <div style={{ display: "inline-block", marginTop: "30px" }}>
+            <StyledTypography color="inherit" variant={"h4"} marked="center">
+              View Our Locations
+            </StyledTypography>
+          </div>
+          {/* <Typography
+            variant="p"
+            style={{
+              float: "right",
+              marginTop: window.innerWidth > 537 ? "70px" : "10px",
+              fontWeight: "400",
+            }}
+          >
+            Scroll!
+          </Typography> */}
+          <Grid container direction="column" spacing={0}>
+            {locationData ? (
+              Object.keys(locationData).map((val) => (
+                <div style={{ marginBottom: 10 }}>
+                  <Grid item style={{ marginLeft: 30, marginTop: 20 }}>
+                    <div style={{ display: "inline-block" }}>
+                      <Typography color="inherit" variant={"h5"}>
+                        {val}
+                      </Typography>
+                    </div>
+                  </Grid>
+                  <Grid
+                    container
+                    direction="row"
+                    spacing={0}
+                    style={{
+                      marginLeft: 40,
+                      marginTop: 0,
+                      // scrollPaddingBlockEnd: 20,
+                    }}
+                    className={classes.slider}
+                  >
+                    {locationData[val].map((datapoint, index) => {
+                      return (
+                        <Grid item key={"locationnote" + index}>
+                          <LocationNote
+                            theme={theme}
+                            style={{
+                              ...cardStyle,
+                              // backColor: cardColors[index % cardColors.length],
+                            }}
+                            datapoint={datapoint}
+                          />
+                        </Grid>
+                      );
+                    })}
+                  </Grid>
                 </div>
-              </Grid>
-              <Grid
-                container
-                direction="row"
-                spacing={4}
-                style={{ marginLeft: 40, marginTop: 0 }}
-                className={classes.slider}
-              >
-                {locationData[val].map((datapoint, index) => {
-                  return (
-                    <Grid
-                      item
-                      key={"locationnote" + index}
-                      // xs={6}
-                      // lg={4}
-                      // md={4}
-                    >
-                      <LocationNote
-                        theme={theme}
-                        style={{
-                          ...cardStyle,
-                          backColor: cardColors[index % cardColors.length],
-                        }}
-                        datapoint={datapoint}
-                      />
-                    </Grid>
-                  );
-                })}
-              </Grid>
-            </div>
-          ))}
+              ))
+            ) : (
+              <></>
+            )}
 
-          {/* <Grid container direction="row">
+            {/* <Grid container direction="row">
           {locationData["completed"].map((datapoint, index) => {
             return (
               <Grid item key={"locationnote" + index}>
@@ -218,8 +218,9 @@ function LocationCards(props) {
             );
           })}
         </Grid> */}
-        </Grid>
-      </Container>
+          </Grid>
+        </Container>
+      )}
     </div>
   );
 }
