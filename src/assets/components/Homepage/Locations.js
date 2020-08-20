@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Grid, Container, Typography } from "@material-ui/core";
+import { Grid, Container, Typography, useMediaQuery } from "@material-ui/core";
 import { useTheme, withStyles } from "@material-ui/core/styles";
 import LocationNote from "./LocationCard";
 import StyledTypography from "../StyledTypography";
@@ -23,8 +23,6 @@ const styles = (theme) => ({
     backgroundColor: "#E1F3F4",
   },
   slider: {
-    flexWrap: "nowrap",
-    overflow: "scroll",
     scrollBehavior: "smooth",
 
     "&::-webkit-scrollbar": {
@@ -84,44 +82,13 @@ function Cards(props) {
     console.log(err);
   }
 
-  const totalCardPxWidth =
-    theme.spacing(cardStyle.width + cardStyle.wordPad * 2 + cardStyle.backPad) +
-    40;
-
-  const data = ["a", "a", "a"];
-
-  const contentWidth = theme.breakpoints.values.lg;
-
-  // check for window resize
-  const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
-  React.useEffect(() => {
-    function resizeListener() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", resizeListener);
-    return () => {
-      window.removeEventListener("resize", resizeListener);
-    };
-  }, []);
-
-  const minOffset = Math.max((windowWidth - contentWidth) / 2, 0); // max scroll to left
-  const maxOffset = -1 * data.length * totalCardPxWidth + windowWidth; // this is max scroll to right
-
-  // control cards movement, start with min
-  const [offset, setOffset] = React.useState(-minOffset);
-
+  // breakpoints for the grid
+  const matches = useMediaQuery(theme.breakpoints.only("xs"));
   // find an integer number of card widths to move. at least try to move one card width
-  const slideDist = Math.max(
-    Math.ceil(
-      Math.floor(windowWidth / totalCardPxWidth / 2) * totalCardPxWidth
-    ),
-    totalCardPxWidth
-  );
 
   const sliderRef = React.useRef();
   const sliderPosRef = React.useRef();
 
-  const [isGridHovered, setIsGridHovered] = React.useState(false);
   function opacity() {
     if (locationData === null) {
       return { opacity: "0" };
@@ -130,16 +97,7 @@ function Cards(props) {
     }
   }
   return (
-    <div
-      className={classes.root}
-      onMouseOver={() => setIsGridHovered(true)}
-      onMouseLeave={() =>
-        setTimeout(() => {
-          setIsGridHovered(false);
-        }, 50)
-      }
-      style={opacity()}
-    >
+    <div className={classes.root} style={opacity()}>
       {!locationData ? (
         <></>
       ) : (
@@ -149,16 +107,6 @@ function Cards(props) {
               View Our Locations
             </StyledTypography>
           </div>
-          {/* <Typography
-            variant="p"
-            style={{
-              float: "right",
-              marginTop: window.innerWidth > 537 ? "70px" : "10px",
-              fontWeight: "400",
-            }}
-          >
-            Scroll!
-          </Typography> */}
           <Grid container direction="column" spacing={0}>
             {locationData ? (
               Object.keys(locationData).map((val) => (
@@ -174,13 +122,15 @@ function Cards(props) {
                     container
                     direction="row"
                     spacing={0}
+                    className={classes.slider}
                     style={{
                       marginLeft: 40,
                       marginTop: 0,
-                      // scrollPaddingBlockEnd: 20,
+                      flexWrap: matches ? "nowrap" : "wrap",
+                      overflow: matches ? "scroll" : "",
                     }}
-                    className={classes.slider}
                   >
+                    {console.log(matches)}
                     {locationData[val].map((datapoint, index) => {
                       return (
                         <Grid item key={"locationnote" + index}>
@@ -188,7 +138,6 @@ function Cards(props) {
                             theme={theme}
                             style={{
                               ...cardStyle,
-                              // backColor: cardColors[index % cardColors.length],
                             }}
                             datapoint={datapoint}
                           />
@@ -201,23 +150,6 @@ function Cards(props) {
             ) : (
               <></>
             )}
-
-            {/* <Grid container direction="row">
-          {locationData["completed"].map((datapoint, index) => {
-            return (
-              <Grid item key={"locationnote" + index}>
-                <LocationNote
-                  theme={theme}
-                  style={{
-                    ...cardStyle,
-                    backColor: cardColors[index % cardColors.length],
-                  }}
-                  datapoint={datapoint}
-                />
-              </Grid>
-            );
-          })}
-        </Grid> */}
           </Grid>
         </Container>
       )}
