@@ -68,7 +68,6 @@ function Cards(props) {
       "Deliveries Completed To:": [],
     };
     Object.keys(data).forEach((element) => {
-      console.log(data, element);
       data[element].forEach((loc) => {
         total[
           loc.enabled ? "Currently Delivering To:" : "Deliveries Completed To:"
@@ -107,7 +106,12 @@ function Cards(props) {
               View Our Locations
             </StyledTypography>
           </div>
-          <Grid container direction="column" spacing={0}>
+          <Grid
+            container
+            direction="column"
+            spacing={0}
+            style={{ flexWrap: "nowrap", overflowX: "hide" }}
+          >
             {locationData ? (
               Object.keys(locationData).map((val) => (
                 <div style={{ marginBottom: 10 }}>
@@ -121,16 +125,16 @@ function Cards(props) {
                   <Grid
                     container
                     direction="row"
-                    spacing={0}
                     className={classes.slider}
                     style={{
                       marginLeft: 40,
                       marginTop: 0,
+                      // flexWrap: "nowrap",
+                      overflowX: "auto",
                       flexWrap: matches ? "nowrap" : "wrap",
-                      overflow: matches ? "scroll" : "",
+                      // overflow: matches ? "scroll" : "scroll",
                     }}
                   >
-                    {console.log(matches)}
                     {locationData[val].map((datapoint, index) => {
                       return (
                         <Grid item key={"locationnote" + index}>
