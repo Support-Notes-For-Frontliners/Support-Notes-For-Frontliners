@@ -101,11 +101,14 @@ function Cards(props) {
         <></>
       ) : (
         <Container>
-          <div style={{ display: "inline-block", marginTop: "30px" }}>
-            <StyledTypography color="inherit" variant={"h4"} marked="center">
-              View Our Locations
-            </StyledTypography>
-          </div>
+                <div style={{display:"inline-block", marginTop:"30px", padding:"30px"}}>
+                    <StyledTypography color="inherit" variant={"h4"} marked="center" >
+                        <div style={{textAlign:"center"}}>
+                          View Our Delivery Locations
+                        </div>
+                        
+                    </StyledTypography>
+                </div>
           <Grid
             container
             direction="column"
