@@ -65,7 +65,8 @@ function Slider(props){
     
     const arrSum = arr => arr.reduce((a,b) => a + b, 0)
     const averageCardWidth = arrSum(NoteData.map(item => item.body.length/widthDivisor))/NoteData.length
-    const totalCardPxWidth = theme.spacing(averageCardWidth+cardStyle.wordPad*2+cardStyle.backPad) + 40
+    const totalCardPxWidth = Math.round( theme.spacing(averageCardWidth+cardStyle.wordPad*2+cardStyle.backPad) + 40 )
+    // console.log(totalCardPxWidth)
 
     const contentWidth = theme.breakpoints.values.lg
 
@@ -92,7 +93,7 @@ function Slider(props){
     
 
     // find an integer number of card widths to move. at least try to move one card width
-    const slideDist = Math.max( Math.ceil(( Math.floor(windowWidth/totalCardPxWidth/2)) * totalCardPxWidth), totalCardPxWidth )
+    const slideDist = Math.max( Math.ceil(( Math.floor(windowWidth/totalCardPxWidth)) * totalCardPxWidth), totalCardPxWidth )
     // console.log("dist" + slideDist)
     // console.log("offset" + offset)
 
@@ -109,10 +110,10 @@ function Slider(props){
 
         var scrollTo = currentPos
         if (direction === "right"){
-            scrollTo = currentPos + minOffset + slideDist - currentPos%totalCardPxWidth
+            scrollTo = currentPos + minOffset + slideDist //- currentPos%totalCardPxWidth
         }
         else if (direction === "left"){
-            scrollTo = currentPos + minOffset - slideDist - currentPos%totalCardPxWidth
+            scrollTo = currentPos + minOffset - slideDist //- currentPos%totalCardPxWidth
         }
 
         scrollTo = Math.min( Math.max(scrollTo, -minOffset), -maxOffset+minOffset)
