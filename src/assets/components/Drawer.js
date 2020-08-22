@@ -82,7 +82,7 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-        {['Home', 'Write a Note', 'Note Gallery', 'About'].map((text, index) => (
+        {['Home', 'Write a Note', 'Gallery', 'About'].map((text, index) => (
           <ListItemLink button component={RouterLink} to={RefList[index]}>
             <ListItemIcon>{IconList[index]}</ListItemIcon>
             <ListItemText primary={text} />
@@ -90,7 +90,7 @@ function ResponsiveDrawer(props) {
         ))}
         <ListItem button component="a" href="https://blog.notesforfrontliners.org">
             <ListItemIcon><AnnouncementIcon/></ListItemIcon>
-            <ListItemText primary={"News"} />
+            <ListItemText primary={"Blog"} />
         </ListItem>
       </List>
     </div>
@@ -112,7 +112,7 @@ function ResponsiveDrawer(props) {
           
           <Typography variant="h6" className={classes.title} noWrap>
                 <Link underline="none" component={RouterLink} to="/" style = {{color: "white" }}> 
-                Support Notes For Frontliners
+                 Notes For Frontliners
                 </Link>
             </Typography>
         </Toolbar>

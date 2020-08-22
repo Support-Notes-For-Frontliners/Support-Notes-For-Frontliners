@@ -39,7 +39,7 @@ const { classes } = props;
     <PageTitleLayout  height="10vh" backgroundClassName={classes.background}>
     <img style={{ display: 'none' }} src={backgroundImage} alt="increase priority" />
     <StyledTypography color="inherit" align="center" variant="h2" marked="center">
-          Note Gallery
+          Gallery
     </StyledTypography>
       <StyledTypography className={classes.h5} color="inherit" align="center" variant="h5" marked="center">
         Write a note and watch it join the hundreds of other notes of encouragement from the community! 
