@@ -46,6 +46,11 @@ const styles = (theme) => ({
     sliderStart:{
         height:"100%",
     },
+    h5: {
+        [theme.breakpoints.up('md')]: {
+          fontSize: "2.2rem"
+        }
+    }
 })
 
 const themeTypo = createMuiTheme({
@@ -139,7 +144,7 @@ function Slider(props){
         <div className={classes.root} onMouseOver={()=>setIsGridHovered(true)} onMouseLeave={()=>setTimeout(()=>{setIsGridHovered(false)}, 50)} >
             <Container>
                 <div style={{display:"inline-block", marginTop:"30px"}}>
-                    <StyledTypography color="inherit" variant={"h4"} marked="left" >
+                    <StyledTypography color="inherit" className = {classes.h5} variant={"h5"} marked="left" >
                         Notes From Around the World
                     </StyledTypography>
                 </div>

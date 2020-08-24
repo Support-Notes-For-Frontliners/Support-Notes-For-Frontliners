@@ -63,7 +63,7 @@ HideOnScroll.propTypes = {
 export default function NavBar(props) {
 const classes = useStyles();
 
-var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+// var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 
   return (

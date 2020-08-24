@@ -40,12 +40,17 @@ const styles = (theme) => ({
   sliderStart: {
     height: "100%",
   },
-  // locationRows:{
-  //   margin: theme.spacing(0,2,0,10),
-  //   [theme.breakpoints.down('md')] : {
-  //     margin: theme.spacing(1),
-    // }
-//  ?\ }
+  h6: {
+    [theme.breakpoints.up('sm')]: {
+      fontSize: "1.6rem"
+    }
+  },
+  h5: {
+    [theme.breakpoints.up('md')]: {
+      fontSize: "2.2rem"
+    }
+  }
+    
 });
 
 function LocationCards(props) {
@@ -109,7 +114,7 @@ function Cards(props) {
         <>
         <Container>
           <div style={{ display: "inline-block", marginTop: "30px" }}>
-            <StyledTypography color="inherit" variant={"h4"} marked="Left">
+            <StyledTypography color="inherit" className = {classes.h5} variant={"h5"} marked="Left">
               View Our Locations
             </StyledTypography>
           </div>
@@ -126,7 +131,7 @@ function Cards(props) {
                 <div style={{ marginBottom: 10 }}>
                   <Grid item style={{ marginLeft: 30, marginTop: 20 }}>
                     <div style={{ display: "inline-block" }}>
-                      <Typography color="inherit" variant={"h5"}>
+                      <Typography className = {classes.h6} color="inherit" variant={"h6"}>
                         {val}
                       </Typography>
                     </div>

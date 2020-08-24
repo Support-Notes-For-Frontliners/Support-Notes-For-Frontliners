@@ -58,7 +58,7 @@ export default function HomeStatWidget({ firebase }) {
       return { opacity: "1", transition: "all 1s ease" };
     }
   }
-  const xsVal = 4;
+  // const xsVal = 4;
   const classes = useStyles();
   return (
 

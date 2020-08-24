@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import StyledTypography from './StyledTypography'
-import ProductHeroLayout from './ProductHeroLayout';
 import Hidden from '@material-ui/core/Hidden';
 import HomeStatWidget from './HomeStatWidget.js';
 import FirebaseContext from './FireBase/FireBaseContext';
@@ -26,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '700px',
     margin: theme.spacing(10, 0, 2, 0),
     [theme.breakpoints.down('sm')]: {
-      margin: theme.spacing(2, 0, 2, 0),
-      fontSize: '2.8rem',
+      margin: theme.spacing(4, 0, 2, 0),
+      fontSize: '2.1rem',
     },
   },
   h2: {
