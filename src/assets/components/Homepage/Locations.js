@@ -8,7 +8,7 @@ import FirebaseContext from "../FireBase/FireBaseContext";
 
 // style for cards
 const cardStyle = {
-  width: 32,
+  width: 30,
   // height: 5,
   wordPad: 1,
 };
@@ -20,7 +20,7 @@ const styles = (theme) => ({
     scrollBehavior: "smooth",
   },
   root: {
-    backgroundColor: "#E1F3F4",
+    backgroundColor: theme.palette.primary.light,
   },
   slider: {
     scrollBehavior: "smooth",
@@ -40,6 +40,12 @@ const styles = (theme) => ({
   sliderStart: {
     height: "100%",
   },
+  // locationRows:{
+  //   margin: theme.spacing(0,2,0,10),
+  //   [theme.breakpoints.down('md')] : {
+  //     margin: theme.spacing(1),
+    // }
+//  ?\ }
 });
 
 function LocationCards(props) {
@@ -100,12 +106,15 @@ function Cards(props) {
       {!locationData ? (
         <></>
       ) : (
+        <>
         <Container>
           <div style={{ display: "inline-block", marginTop: "30px" }}>
-            <StyledTypography color="inherit" variant={"h4"} marked="center">
+            <StyledTypography color="inherit" variant={"h4"} marked="Left">
               View Our Locations
             </StyledTypography>
           </div>
+          </Container>
+          <Container>
           <Grid
             container
             direction="column"
@@ -155,8 +164,10 @@ function Cards(props) {
               <></>
             )}
           </Grid>
-        </Container>
+           </Container>
+        </>
       )}
+      <br/>
     </div>
   );
 }

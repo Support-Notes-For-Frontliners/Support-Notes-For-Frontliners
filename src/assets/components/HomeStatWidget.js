@@ -4,15 +4,14 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
-  container:{
-    margin: theme.spacing(4,2,4,2),
+  container: {
+    margin: theme.spacing(10, 0, 4, 0),
     textAlign: "left"
-  },  
+  },
   widget: {
-    padding: theme.spacing(2),
     color: "black",
   },
-  h1:{
+  h1: {
     fontSize: '3rem',
     fontWeight: '600',
     display: "inline",
@@ -20,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '2rem'
     },
   },
-  h2:{
+  h2: {
     fontSize: '1.5rem',
     fontWeight: '600',
     display: "inline",
@@ -29,12 +28,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   body1: {
-    margin: theme.spacing(2,0,2,0),
-    maxWidth: "350px",
+    margin: theme.spacing(1, 0, 1, 0),
+    maxWidth: "375x",
+    width: "80%",
     color: "#606060",
-    [theme.breakpoints.down('md')]: {
-      maxWidth: '80vw'
-    },
   }
 }));
 
@@ -64,26 +61,27 @@ export default function HomeStatWidget({ firebase }) {
   const xsVal = 4;
   const classes = useStyles();
   return (
+
     <Grid
       container
-      spacing={3}
+      spacing={0}
       justify="center"
       alignItems="flex-start"
       style={opacity()}
       className={classes.container}
     >
       <Grid item xs={12} md={4} className={classes.widget}>
-        <Typography variant = "h3" className={classes.h1}>
+        <Typography variant="h3" className={classes.h1}>
           {orgStats ? orgStats["facility_count"] : 7}
         </Typography>
         <Typography className={classes.h2}> Total Facilities</Typography>
         <Typography variant="body1" className={classes.body1}>
-        We proudly deliver your notes to 4 homeless shelters, 3 nursing homes, and 7 hospitals. We are constantly looking for more centers to support.
+          We proudly deliver your notes to 4 homeless shelters, 3 nursing homes, and 7 hospitals. We are constantly looking for more centers to support.
         </Typography>
       </Grid>
 
       <Grid item xs={12} md={4} className={classes.widget}>
-        <Typography variant = "h3" className={classes.h1}>
+        <Typography variant="h3" className={classes.h1}>
           {orgStats ? orgStats["notes_count"] : 374}
         </Typography>
         <Typography className={classes.h2}> Notes Written</Typography>
@@ -93,14 +91,15 @@ export default function HomeStatWidget({ firebase }) {
       </Grid>
 
       <Grid item xs={12} md={4} className={classes.widget}>
-        <Typography variant = "h3" className={classes.h1}>
+        <Typography variant="h3" className={classes.h1}>
           {orgStats ? orgStats["sent_count"] : 67}
         </Typography>
         <Typography className={classes.h2} > Notes Delivered</Typography>
         <Typography variant="body1" className={classes.body1}>
-          We've delivered this much and counting! Each and every note delivered is a message of encouragement, a token of appreciation, and a powerful tool to raise awareness about worker mental health. 
+          We've delivered this much and counting! Each and every note delivered is a message of encouragement, a token of appreciation, and a powerful tool to raise awareness about worker mental health.
         </Typography>
       </Grid>
+
     </Grid>
   );
 }

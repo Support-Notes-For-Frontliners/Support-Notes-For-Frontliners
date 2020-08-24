@@ -139,11 +139,8 @@ function Slider(props){
         <div className={classes.root} onMouseOver={()=>setIsGridHovered(true)} onMouseLeave={()=>setTimeout(()=>{setIsGridHovered(false)}, 50)} >
             <Container>
                 <div style={{display:"inline-block", marginTop:"30px"}}>
-                    <StyledTypography color="inherit" variant={"h4"} marked="center" >
-                        <div style={{textAlign:"center"}}>
+                    <StyledTypography color="inherit" variant={"h4"} marked="left" >
                         Notes From Around the World
-                        </div>
-                        
                     </StyledTypography>
                 </div>
                 <Typography className = {classes.links}  variant="p" style= {{textDecoration: "underline", float:"right", marginTop: (window.innerWidth>537 ? "70px": "10px"), fontWeight: "400" }}>

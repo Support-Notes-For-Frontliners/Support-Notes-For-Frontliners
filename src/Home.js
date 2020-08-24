@@ -24,7 +24,7 @@ function Home() {
   return (
     <animated.div style={springProps}>
       <div>
-        <Hero parentCallback={scrollTo} />
+        <Hero />
 
         {/* <Element name="scroll-to-element" className="element">
           <HomeExplainer />

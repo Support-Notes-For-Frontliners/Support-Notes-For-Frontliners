@@ -33,12 +33,19 @@ const styles = (theme) => ({
     margin: `${theme.spacing(1)}px 0 0`,
     backgroundColor: theme.palette.secondary.main,
   },
+  markedH5Left: {
+    height: 2,
+    width: 28,
+    display: 'block',
+    marginTop: theme.spacing(0.5),
+    background: theme.palette.secondary.main,
+  },
   markedH6Left: {
     height: 2,
     width: 28,
     display: 'block',
     marginTop: theme.spacing(0.5),
-    background: 'currentColor',
+    background: theme.palette.secondary.main,
   },
 });
 
@@ -56,7 +63,7 @@ function Typography(props) {
   const { children, classes, marked = false, variant, ...other } = props;
 
   return (
-    <MuiTypography variantMapping={variantMapping} variant={variant} {...other}>
+    <MuiTypography style={{fontWeight: "600"}} variantMapping={variantMapping} variant={variant} {...other}>
       {children}
       {marked ? (
         <span className={classes[`marked${capitalize(variant) + capitalize(marked)}`]} />
