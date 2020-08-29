@@ -15,7 +15,7 @@ import Footer from "./assets/components/Footer";
 import OtherWebsite from "./assets/components/OtherWebsite";
 import { useSpring, animated } from "react-spring";
 import ProfileData from "./assets/data/profile_data.json";
-
+import Helmet from 'react-helmet'
 const backgroundImage = "/images/about-background.jpg";
 
 const styles = (theme) => ({
@@ -63,6 +63,12 @@ function ProductHero(props, { parentCallback }) {
   return (
     <animated.div style={springProps}>
       <div>
+      <Helmet>
+        <title>
+          About Us
+          </title>
+        <meta name="description" content="Learn more about our beginnings, accomplishments, and our future ambitions." />
+      </Helmet>
         <PageTitleLayout backgroundClassName={classes.background}>
           {/* Increase the network loading priority of the background image. */}
           <img

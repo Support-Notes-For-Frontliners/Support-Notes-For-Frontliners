@@ -6,6 +6,7 @@ import Footer from "./assets/components/Footer.js";
 import PageTitleLayout from './assets/components/PageTitleLayout';
 import StyledTypography from './assets/components/StyledTypography'
 import { withStyles } from '@material-ui/core/styles';
+import Helmet from 'react-helmet'
 
 
 const backgroundImage =
@@ -36,6 +37,12 @@ const { classes } = props;
 
   return (
   <div>
+    <Helmet>
+      <title>
+        Gallery
+      </title>
+      <meta name="description" content="Write a note and watch it join the hundreds of other notes of encouragement from the community!"/>
+    </Helmet>
     <PageTitleLayout  height="10vh" backgroundClassName={classes.background}>
     <img style={{ display: 'none' }} src={backgroundImage} alt="increase priority" />
     <StyledTypography color="inherit" align="center" variant="h2" marked="center">
