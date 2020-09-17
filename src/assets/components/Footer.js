@@ -95,13 +95,13 @@ export default function AppFooter() {
               <Grid item>
                 <Copyright />
               </Grid>
-              <Grid item>
-                <img style={{ height: "50px" }}
-                  src="/images/hcb-logo-original-light.svg"
-                  alt="Powered by Hack Club Bank"
-                />
-              </Grid>
             </Grid>
+          </Grid>
+          <Grid item>
+            <img style={{ height: "50px" }}
+              src="/images/hcb-logo-original-light.svg"
+              alt="Powered by Hack Club Bank"
+            />
           </Grid>
           {/* <Grid item xs={6} sm={4} md={2}>
             <Typography variant="h6" marked="left" gutterBottom>
