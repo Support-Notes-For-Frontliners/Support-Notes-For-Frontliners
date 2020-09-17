@@ -62,7 +62,7 @@ export default function AppFooter() {
     <Typography component="footer" className={classes.root}>
       <Container className={classes.container}>
         <Grid container spacing={5}>
-          <Grid item xs={6} sm={4} md={3}>
+          <Grid item xs={6}>
             <Grid
               container
               direction="column"
@@ -95,6 +95,12 @@ export default function AppFooter() {
               <Grid item>
                 <Copyright />
               </Grid>
+              <Grid item>
+                <img style={{ height: "50px" }}
+                  src="/images/hcb-logo-original-light.svg"
+                  alt="Powered by Hack Club Bank"
+                />
+              </Grid>
             </Grid>
           </Grid>
           {/* <Grid item xs={6} sm={4} md={2}>
@@ -111,6 +117,10 @@ export default function AppFooter() {
             </ul>
           </Grid> */}
           <Grid item xs={12}>
+            {"Notes for Frontliners is fiscally sponsored by Hack Club Bank, a "}
+            {"project by the The Hack Foundation (d.b.a Hack Club), a 501(c)(3) "}
+            {"nonprofit (EIN: 81-2908499)."}
+            <br />
             <Typography variant="caption">
               {"Icons made by "}
               <Link rel="sponsored" title="SVG Repo" style={{ color: "black" }}>
