@@ -19,8 +19,8 @@ const firebaseConfig = {
 
 class FireBase {
     constructor() {
+        console.log(process.env.REACT_APP_DATABASE_URL)
         app.initializeApp(firebaseConfig);
-
         this.db = app.database();
         this.auth = app.auth();
     }

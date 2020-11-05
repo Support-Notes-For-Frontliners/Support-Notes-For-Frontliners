@@ -36,7 +36,7 @@ export default function LoadNotes(props) {
     const [data, setData] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
 
-    const formRef = props.firebase.db.ref("formData");
+    const formRef = props.firebase.db.ref("aggData/test/formData");
     let query = formRef.orderByChild(props.type).equalTo(true).limitToLast(101)
 
     React.useEffect(() => {

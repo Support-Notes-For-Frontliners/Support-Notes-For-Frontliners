@@ -82,9 +82,10 @@ export default function ProgressStepper(props) {
 
   const steps = getSteps();
 
-  let formRef = props.firebase.db.ref("formData");
+  // TODO: Rename ref to match new firebase
+  let formRef = props.firebase.db.ref("aggData/test/formData");
   const [locationData, setLocationData] = React.useState(null);
-  let locationRef = props.firebase.db.ref("locationData");
+  let locationRef = props.firebase.db.ref("aggData/test/locationData");
 
   React.useEffect(() => {
     locationRef.on("value", gotData, errData);

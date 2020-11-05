@@ -67,8 +67,10 @@ function Cards(props) {
   const [locationData, setData] = React.useState(null);
   // const locationData = props.LocationData;?
   const theme = useTheme();
+//TODO: Use geolocation for relevant locations shown on homepage
+  const locationRef = props.firebase.db.ref("aggData/test/locationData/locations");
 
-  const locationRef = props.firebase.db.ref("locationData/locations");
+  
   React.useEffect(() => {
     locationRef.on("value", gotStatData, errData);
   }, []);
