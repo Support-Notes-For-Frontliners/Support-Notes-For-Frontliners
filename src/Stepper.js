@@ -108,7 +108,10 @@ export default function ProgressStepper(props) {
     //if normal fields are filled
     if (noteContent !== null && senderName !== null && noteContent !== "" && senderName !== "") {
       //if on ref note page and refnote not filled 
-      if(window.location.pathname !== "/note" && (referrerName === null || referrerName === "") || (nhsName === null || nhsName === "")){
+      if(window.location.pathname === "/nhsnote" && (nhsName === null || nhsName === "")){
+        setBtnDisabled(true);
+      }
+      else if (window.location.pathname === "/refnote" && (referrerName === null || referrerName === "")){
         setBtnDisabled(true);
       }
       //if all filled
