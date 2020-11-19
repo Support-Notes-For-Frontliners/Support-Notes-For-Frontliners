@@ -79,6 +79,7 @@ export default function ProgressStepper(props) {
   const [noteContent, setNoteContent] = React.useState(null);
   const [senderName, setSenderName] = React.useState(null);
   const [referrerName, setReferrerName] = React.useState(null);
+  const [nhsName, setNhsName] = React.useState(null);
 
   const steps = getSteps();
 
@@ -107,7 +108,7 @@ export default function ProgressStepper(props) {
     //if normal fields are filled
     if (noteContent !== null && senderName !== null && noteContent !== "" && senderName !== "") {
       //if on ref note page and refnote not filled 
-      if(window.location.pathname !== "/note" && (referrerName === null || referrerName === "")){
+      if(window.location.pathname !== "/note" && (referrerName === null || referrerName === "") || (nhsName === null || nhsName === "")){
         setBtnDisabled(true);
       }
       //if all filled
@@ -120,7 +121,7 @@ export default function ProgressStepper(props) {
       setBtnDisabled(true)
     }
 
-  }, [noteContent, senderName, referrerName])
+  }, [noteContent, senderName, referrerName, nhsName])
 
   function getStepContent(step) {
     switch (step) {
@@ -146,7 +147,7 @@ export default function ProgressStepper(props) {
           />
         );
       case 2:
-        return <WriteNote stepperCallbackDescription={handleSender} stepperCallbackNote={handleNote} stepperCallbackReferrer={handleReferrer} recipient={cardSelected} />
+        return <WriteNote stepperCallbackDescription={handleSender} stepperCallbackNote={handleNote} stepperCallbackReferrer={handleReferrer} stepperCallbackNHS={handleNhs} recipient={cardSelected} />
       default:
         return "Unknown step";
     }
@@ -177,6 +178,13 @@ export default function ProgressStepper(props) {
     }
     setReferrerName(referrerData);
     console.log(referrerData)
+  }
+  function handleNhs(nhsData){
+    if (nhsData === ""){
+      setNhsName(null)
+    }
+    setNhsName(nhsData);
+    console.log(nhsData);
   }
 
   const totalSteps = () => {
@@ -242,6 +250,7 @@ export default function ProgressStepper(props) {
       note: noteContent,
       sender: senderName,
       referrer: referrerName,
+      nhs: nhsName,
       approved: false,
       sent: false,
     };

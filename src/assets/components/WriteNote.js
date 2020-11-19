@@ -41,7 +41,7 @@ const theme = createMuiTheme({
 
 const height = 535
 
-export default function NoteInterface({recipient, stepperCallbackNote, stepperCallbackDescription, stepperCallbackReferrer}) {
+export default function NoteInterface({recipient, stepperCallbackNote, stepperCallbackDescription, stepperCallbackReferrer, stepperCallbackNHS}) {
   const [noteContent, setNoteContent] = React.useState(null)
   const [writerDescription, setWriterDescription] = React.useState(null);
   
@@ -63,6 +63,11 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
   function handleReferrerChange(event){
     event.preventDefault()
     stepperCallbackReferrer(event.target.value)
+  }
+
+  function handleNHSChange(event){
+    event.preventDefault()
+    stepperCallbackNHS(event.target.value)
   }
 
   const springProps = useSpring({ opacity: 1, from: { opacity: 0 } })
@@ -136,7 +141,7 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
           
           onChange={handleDescriptionChange}
         />
-        {window.location.pathname === "/note" || 
+        {window.location.pathname === "/refnote" && 
           <TextField
             id="Referrer"
             label="Who Referred You (Their Name)"
@@ -145,6 +150,17 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
             style={{marginTop:"10px", width:300}}
 
             onChange={handleReferrerChange}
+          />
+        }
+        {window.location.pathname === "/nhsnote" &&
+          <TextField
+            id="NHSName"
+            label="Your first and last name (for NHS)"
+            variant="outlined"
+            fullWidth
+            style={{marginTop:"10px", width:300}}
+
+            onChange={handleNHSChange}
           />
         }
         </div>

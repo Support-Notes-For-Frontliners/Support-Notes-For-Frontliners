@@ -19,6 +19,7 @@ function App() {
         <Route component={About} path = "/about" />
         <Route component={Gallery} path = "/note-gallery"/>
         <Route component={Note} path = "/refnote"/>
+        <Route component={Note} path="/nhsnote" />
       </Switch>
     </div>
   );
