@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
-import { Typography, Grid, createMuiTheme, ThemeProvider} from '@material-ui/core';
+import { Typography, Grid, createMuiTheme, ThemeProvider, FormGroup, FormControlLabel, RadioGroup, Radio} from '@material-ui/core';
 import { useSpring, animated } from 'react-spring'
 
 
@@ -42,8 +42,11 @@ const theme = createMuiTheme({
 const height = 535
 
 export default function NoteInterface({recipient, stepperCallbackNote, stepperCallbackDescription, stepperCallbackReferrer, stepperCallbackNHS}) {
+  
   const [noteContent, setNoteContent] = React.useState(null)
   const [writerDescription, setWriterDescription] = React.useState(null);
+  
+  const[customFormData, setCustomFormData] = React.useState(null)
   
   const classes = useStyles();
 
@@ -69,6 +72,10 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
     event.preventDefault()
     stepperCallbackNHS(event.target.value)
   }
+
+  const handleRadioButtons = (event) => {
+    setCustomFormData(event.target.value);
+  };
 
   const springProps = useSpring({ opacity: 1, from: { opacity: 0 } })
 
@@ -141,17 +148,50 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
           
           onChange={handleDescriptionChange}
         />
+        
         {window.location.pathname === "/refnote" && 
-          <TextField
-            id="Referrer"
-            label="Who Referred You (Their Name)"
-            variant="outlined"
-            fullWidth
-            style={{marginTop:"10px", width:300}}
+            <FormGroup row>
+              <RadioGroup value={customFormData} onChange={handleRadioButtons}>
+                <FormControlLabel 
+                control={<Radio/>} 
+                label="I was referred to write a note"
+                value="reffered"
+                />
+                <FormControlLabel 
+                control={<Radio/>} 
+                label="I'm writing a note for volunteer hours"
+                value="volunteer"
+                />
+              </RadioGroup>
+            </FormGroup>
+        }
 
-            onChange={handleReferrerChange}
+        {customFormData === "reffered" &&
+          <TextField
+          id="Referrer"
+          label="Who Referred You (Their Name)"
+          variant="outlined"
+          fullWidth
+          style={{marginTop:"10px", width:300}}
+
+          onChange={handleReferrerChange}
           />
         }
+
+        {customFormData === "volunteer" &&
+          <TextField
+          id="Referrer"
+          label="Your Name"
+          variant="outlined"
+          fullWidth
+          style={{marginTop:"10px", width:300}}
+
+          onChange={handleReferrerChange}
+          />
+        }
+
+      
+        
         {window.location.pathname === "/nhsnote" &&
           <TextField
             id="NHSName"
