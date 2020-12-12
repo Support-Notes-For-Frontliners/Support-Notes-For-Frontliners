@@ -77,6 +77,10 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
     setCustomFormData(event.target.value);
   };
 
+  const handleRemoveDefault = (e) => {
+    e.preventDefault();
+  };
+
   const springProps = useSpring({ opacity: 1, from: { opacity: 0 } })
 
   return (
@@ -124,6 +128,9 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
         <div className={classes.input}>
         <TextField
         onChange={handleInputChange}
+        onCut={handleRemoveDefault}
+        onCopy={handleRemoveDefault}
+        onPaste={handleRemoveDefault}
           id="note-input-box"
           label="Write Your Note"
           multiline
