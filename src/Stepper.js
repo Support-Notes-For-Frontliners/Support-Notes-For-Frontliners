@@ -71,6 +71,8 @@ export default function ProgressStepper(props) {
   const [completed, setCompleted] = React.useState({});
   const [btnDisabled, setBtnDisabled] = React.useState(true);
 
+  const [isNrgNote, setIsNrgNote] = React.useState(false);
+
   //Step 1:
   const [cardSelected, setCardSelected] = React.useState(null);
   //Step 2:
@@ -114,6 +116,10 @@ export default function ProgressStepper(props) {
       else if (window.location.pathname === "/refnote" && (referrerName === null || referrerName === "")){
         setBtnDisabled(true);
       }
+      else if (window.location.pathname === "/refnote"){
+        console.log(referrerName.toLowerCase())
+        setIsNrgNote(referrerName.toLowerCase() === "nrg");
+      }
       //if all filled
       else{
         setBtnDisabled(false)
@@ -150,7 +156,7 @@ export default function ProgressStepper(props) {
           />
         );
       case 2:
-        return <WriteNote stepperCallbackDescription={handleSender} stepperCallbackNote={handleNote} stepperCallbackReferrer={handleReferrer} stepperCallbackNHS={handleNhs} recipient={cardSelected} />
+        return <WriteNote stepperCallbackDescription={handleSender} stepperCallbackNote={handleNote} stepperCallbackReferrer={handleReferrer} stepperCallbackNHS={handleNhs} recipient={cardSelected} isNrgNote={isNrgNote} />
       default:
         return "Unknown step";
     }

@@ -27,7 +27,14 @@ const useStyles = makeStyles((theme) => ({
   },
   from_display:{
     bottom: '0px',
-    right: '0px'
+    right: '20px'
+  },
+  nrgLogo: {
+    maxWidth: '40px',
+  },
+  nrg_logo_container:{
+    display: "flex",
+    flexDirection: "row-reverse"
   },
 }));
 
@@ -39,9 +46,10 @@ const theme = createMuiTheme({
   }
 });
 
+
 const height = 535
 
-export default function NoteInterface({recipient, stepperCallbackNote, stepperCallbackDescription, stepperCallbackReferrer, stepperCallbackNHS}) {
+export default function NoteInterface({recipient, stepperCallbackNote, stepperCallbackDescription, stepperCallbackReferrer, stepperCallbackNHS, isNrgNote}) {
   
   const [noteContent, setNoteContent] = React.useState(null)
   const [writerDescription, setWriterDescription] = React.useState(null);
@@ -120,6 +128,7 @@ export default function NoteInterface({recipient, stepperCallbackNote, stepperCa
               -From {writerDescription}
             </Typography>
             </ThemeProvider>
+            { isNrgNote && <div className={classes.nrg_logo_container}><img src="/images/nrg_logo.png" className={classes.nrgLogo}/> </div> }
           </Paper>
           </div>
 
