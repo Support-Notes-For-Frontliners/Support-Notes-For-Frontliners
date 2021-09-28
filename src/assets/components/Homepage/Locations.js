@@ -75,7 +75,7 @@ function Cards(props) {
   function gotStatData(data) {
     data = data.val();
     const total = {
-      "Currently Delivering To:": [],
+      // "Currently Delivering To:": [],
       "Deliveries Completed To:": [],
     };
     Object.keys(data).forEach((element) => {

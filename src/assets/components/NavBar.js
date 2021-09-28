@@ -89,20 +89,16 @@ const classes = useStyles();
             </Hidden>
             <Hidden only={['xs']}>
               <Typography className = {`${classes.links} ${classes.importantLink}`}  variant="h6">
-                  <Link underline="none" component={RouterLink} to="/note" style = {{color: "white" }}> 
-                  Write a Note
-                  </Link>
-              </Typography>
-              <Typography className = {classes.links}  variant="h6">
-                  <Link underline="none" component={RouterLink} to="/note-gallery"  style= {{color: "white" }}> 
+                  <Link underline="none" component={RouterLink} to="/note-gallery" style = {{color: "white" }}> 
                   Gallery
                   </Link>
               </Typography>
-              <Typography className={classes.links} variant="h6">
+
+              {/* <Typography className={classes.links} variant="h6">
                 <Link underline="none" href="https://bank.hackclub.com/donations/start/notes-for-frontliners" target="_blank" style={{ color: "white" }}>
                   Donate
                 </Link>
-              </Typography>
+              </Typography> */}
               {/* <Typography className = {classes.links}  variant="h6">
                   <Link underline="none" href="https://blog.notesforfrontliners.org" target="_blank" style= {{color: "white" }}> 
                   Blog

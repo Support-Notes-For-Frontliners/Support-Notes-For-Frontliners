@@ -68,9 +68,9 @@ function ProductHero(props) {
         variant="contained"
         size="large"
         className={classes.button}
-        component={RouterLink} to="/note"
+        component={RouterLink} to="/note-gallery"
       >
-        Write a Note
+        See The Notes You Contributed
       </Button>
     )
   }
@@ -105,10 +105,10 @@ function ProductHero(props) {
           <Grid item xs={12} md={8}>
             <div>
               <StyledTypography color="inherit" variant={"h4"} className={classes.h1}>
-                Show frontline workers that we care
+                Showing frontline workers that we care
             </StyledTypography>
               <Typography className={classes.h2} align='left' variant='h1'>
-                Join the movement supporting the mental health of our frontline workers, one note at a time.
+                We did it! Thanks for helping us complete our movement in supporting the mental health of 1000+ frontline workers. 
             </Typography>
               <Hidden only={['sm', 'xs']}>
                 {noteButton()}
