@@ -67,7 +67,7 @@ export default function HomeStatWidget({ firebase }) {
         </Grid>
         <Grid item xs={xsVal} className={classes.widget}>
             <Typography className={classes.h3} variant="h3">
-            {orgStats ? orgStats["sent_count"] : 67}
+            {"1012"}
             </Typography>
             <Typography >Notes Delivered</Typography>
         </Grid>
